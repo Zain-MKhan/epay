@@ -1,5 +1,7 @@
-business\Customer.class
 dbObjects\CustomerObject.class
-servlets\CustomerLogoutServlet.class
+business\Product.class
 connection\dbConnection.class
+business\Customer.class
+dbObjects\ProductObject.class
+servlets\CustomerLogoutServlet.class
 servlets\CustomerLoginServlet.class
