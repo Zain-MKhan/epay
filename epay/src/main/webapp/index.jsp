@@ -7,6 +7,7 @@
     if (authorizedCustomer!=null){
         request.setAttribute("authorizedCustomer", authorizedCustomer);
     } %>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,6 +18,7 @@
     <%@include file="layout/navbar.jsp"%>
     
     <% out.print(dbConnection.getConnection());%>
+
 
     <%@include file="layout/footer.jsp"%>
   </body>
