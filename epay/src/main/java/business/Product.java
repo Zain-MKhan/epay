@@ -2,28 +2,38 @@ package business;
 
 public class Product {
 
-    private int id;
+    private int sku;
 	private String name;
 	private Double price;
+    private String description;
+    private String vendor;
+    private String slug;
 	private String image;
+
 
     public Product() {
 	}
 	
-	public Product(int id, String name, Double price, String image) {
+	public Product(int sku, String name, Double price,String description,String vendor,String slug, String image) {
 		super();
-		this.id = id;
+		this.sku = sku;
 		this.name = name;
 		this.price = price;
 		this.image = image;
+        this.description= description;
+        this.vendor=vendor;
+        this.slug= slug;
+
 	}
 
-    public int getId() {
-		return id;
+
+
+    public int getSku() {
+		return sku;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setSku(int sku) {
+		this.sku = sku;
 	}
 
 	public String getName() {
@@ -42,6 +52,31 @@ public class Product {
 		this.price = price;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+    
+	public String getVendor() {
+		return vendor;
+	}
+
+	public void setVendor(String vendor) {
+		this.vendor = vendor;
+	}
+    
+	public String getSlug() {
+		return slug;
+	}
+
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+    
 	public String getImage() {
 		return image;
 	}
@@ -50,9 +85,11 @@ public class Product {
 		this.image = image;
 	}
 
+
+
     @Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", image="
+		return "Product [sku=" + sku + ", name=" + name + ", price=" + price + ", image="
 				+ image + "]";
 	}
     
