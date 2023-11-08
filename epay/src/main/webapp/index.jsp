@@ -9,9 +9,13 @@
     if (authorizedCustomer!=null){
         request.setAttribute("authorizedCustomer", authorizedCustomer);
     } 
-    %>
-<%
-    
+%>
+<% Staff authorizedStaff = (Staff) request.getSession().getAttribute("authorizedStaff"); 
+    if (authorizedStaff!=null){
+        request.setAttribute("authorizedStaff", authorizedStaff);
+    } 
+%>    
+<%    
 ProductObject pdobj = new ProductObject(dbConnection.getConnection());
 List<Product> products = pdobj.getAllProducts();   
 %>

@@ -1,9 +1,14 @@
-
 <%@page import="business.*" %>
 <% Customer authorizedCustomer = (Customer) request.getSession().getAttribute("authorizedCustomer"); 
     if (authorizedCustomer!=null){
 		response.sendRedirect("index.jsp");
-    } %>
+    } 
+%>
+<% Staff authorizedStaff = (Staff) request.getSession().getAttribute("authorizedStaff"); 
+    if (authorizedStaff!=null){
+        request.setAttribute("authorizedStaff", authorizedStaff);
+    } 
+%>
 
 <!doctype html>
 <html lang="en">
