@@ -9,13 +9,21 @@
     if (authorizedCustomer!=null){
         request.setAttribute("authorizedCustomer", authorizedCustomer);
     } 
-    %>
-<%
-    
-ProductObject pdobj = new ProductObject(dbConnection.getConnection());
-List<Product> products = pdobj.getSku();   
+%>
+<% Staff authorizedStaff = (Staff) request.getSession().getAttribute("authorizedStaff"); 
+    if (authorizedStaff!=null){
+        request.setAttribute("authorizedStaff", authorizedStaff);
+    } 
 %>
 
+<%
+ProductObject pdobj = new ProductObject(dbConnection.getConnection());
+List<Product> products = pdobj.getAllProducts();   
+%>
+
+<%
+String slug = (String) session.getAttribute("slug");
+%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,31 +33,28 @@ List<Product> products = pdobj.getSku();
   <body>
     <%@include file="layout/navbar.jsp"%>
 
-          <h1>Products</h1>
-          <div class = "container">
-            <div class="row">
-                <%
-                if(!products.isEmpty()){
-                    for (Product p: products){%>
-                      <div class="col-sm-4">
-                        <div class="card">
-                          <img class="card-img-top" src=<%=p.getImage()%> alt="img" style="width: 100%; height: 400px;">
-                          <div class="card-body">
-                            <h5 class="card-title"><%=p.getSku() %></h5>
-                            <div class=" mt-3 d-flex justify-content-between">
-                               <a href="cart.jsp" class="btn btn-primary">Add to cart</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                  <%}
-                }else {
-                    out.println("none");
-                    }
-                %>
+    <%
+      if(!products.isEmpty()){
+        for (Product p: products){
+          if(p.getSlug().equals(slug)){%>
+            <div class="card" style="width: 50%;">
+              <img src=<%=p.getImage()%> class="card-img-top" alt="img" style="width: 50%; height: auto;">
+              <div class="card-body">
+                <h4 class="card-title"><%=p.getName() %></h4>
+                <h5 class="card-text"><%=p.getVendor()%></h5>
+                <p class="card-text"><%=p.getDescription() %></p>
+
+                <% if(authorizedStaff != null){%>
+                  <a href="#" class="btn btn-primary">Update product details</a>
+                <%}%>
+              </div>
             </div>
-          </div>
-              <% out.print(dbConnection.getConnection());%>
-              <%@include file="layout/footer.jsp"%>
+          <%break;
+          }
+        }
+      }
+    %>
+    <% out.print(dbConnection.getConnection());%>
+    <%@include file="layout/footer.jsp"%>
   </body>
 </html>

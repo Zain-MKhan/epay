@@ -45,7 +45,7 @@ List<Product> products = pdobj.getAllProducts();
                             <p class="card-text"><%=p.getDescription() %></p>
                             <div class=" mt-3 d-flex justify-content-between">
                               <a href="cart.jsp" class="btn btn-primary">Add to cart</a>
-                              <a href="product.jsp" class="btn btn-primary">View product</a>
+                              <a href="products/<%=p.getSlug()%>" class="btn btn-primary">View product</a>
                             </div>
                           </div>
                         </div>
