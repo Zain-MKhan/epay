@@ -125,9 +125,9 @@ public class ProductObject {
         try {
             if (cL.size() > 0) {
                 for (Cart item : cL) {
-                    myQuery = "select * from products where sku=?";
+                    myQuery = "select * from products where slug=?";
                     preparedStatement = this.connection.prepareStatement(myQuery);
-                    preparedStatement.setInt(1, item.getSku());
+                    preparedStatement.setString(1, item.getSlug());
                     resultSet = preparedStatement.executeQuery();
                     while (resultSet.next()) {
                         Cart row = new Cart();

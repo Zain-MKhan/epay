@@ -16,9 +16,9 @@ public class cartServlet extends jakarta.servlet.http.HttpServlet{
 
 
             ArrayList<Cart> cList = new ArrayList<>();
-            int sku = Integer.parseInt(request.getParameter("sku"));
+            String slug = request.getParameter("slug");
             Cart cartObj = new Cart();
-            cartObj.setSku(sku);
+            cartObj.setSlug(slug);
             cartObj.setQuantity(1);
 
         
@@ -29,8 +29,8 @@ public class cartServlet extends jakarta.servlet.http.HttpServlet{
             if (cl == null) {
                 cList.add(cartObj);
                 session.setAttribute("somelist", cList);
-              
-                 out.println("testing sessions works ");
+               response.sendRedirect("cart.jsp");
+                 out.println("testing sessions works just go back for now.  ");
             }
             else{
 
@@ -41,7 +41,7 @@ public class cartServlet extends jakarta.servlet.http.HttpServlet{
                 
                 for(Cart c: cList){
 
-                    if (c.getSku()==sku){
+                    if (c.getSlug()==slug){
                         stop=true;
                         out.println("<h3 text-align: center'>Thing is already in yo Cart. <a href='cart.jsp'>Travel to CART</a></h3>");
 
@@ -51,13 +51,13 @@ public class cartServlet extends jakarta.servlet.http.HttpServlet{
                 }
                         if(!stop){
                         cl.add(cartObj);
-                        response.sendRedirect("index.jsp");
+                        response.sendRedirect("cart.jsp");
                         out.println("lets see if we added the prodcus.");
 
                     }
             }
              for(Cart c: cList){
-                out.println(c.getSku());
+                out.println(c.getSlug());
              }
 
 
