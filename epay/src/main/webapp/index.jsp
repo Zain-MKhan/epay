@@ -53,17 +53,6 @@ List<Product> products = pdobj.getAllProducts();
                 %>
             </div>
           </div>
-
-          <form action="products" method="GET">
-            <!-- Replace "/context-path/servlet-url" with the actual URL of your servlet -->
-            <input type="submit" value="CLICK HERE TO TEST OUR GET SERVLET">
-
-<!-- just in case for late.r           <script type="text/javascript">
-              // Use JavaScript to navigate to the servlet's URL
-              window.location.href = "products";
-          </script> --> 
-
-              <p>delete below after.</p>
               <% out.print(dbConnection.getConnection());%>
               <%@include file="layout/footer.jsp"%>
   </body>
