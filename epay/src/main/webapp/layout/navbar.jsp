@@ -28,6 +28,9 @@
               <a class="nav-link" href="createProduct.jsp">Create new product</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="downloadCatalog.jsp">Download product catalog</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="staff-logout">Staff Logout</a>
             </li>
           <%}else{ %>
