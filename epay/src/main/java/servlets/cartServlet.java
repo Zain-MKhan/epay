@@ -64,5 +64,10 @@ public class cartServlet extends jakarta.servlet.http.HttpServlet{
 
          }
 }
+ protected void doPost(jakarta.servlet.http.HttpServletRequest request,jakarta.servlet.http.HttpServletResponse response) throws IOException, ServletException {
+    doGet(request, response);
+
+
+ }
     
 }
