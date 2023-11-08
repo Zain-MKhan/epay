@@ -13,7 +13,7 @@
 <%
     
 ProductObject pdobj = new ProductObject(dbConnection.getConnection());
-List<Product> products = pdobj.getAllProducts();   
+List<Product> products = pdobj.getSku();   
 %>
 
 <!doctype html>
@@ -35,13 +35,9 @@ List<Product> products = pdobj.getAllProducts();
                         <div class="card">
                           <img class="card-img-top" src=<%=p.getImage()%> alt="img" style="width: 100%; height: 400px;">
                           <div class="card-body">
-                            <h5 class="card-title"><%=p.getName() %></h5>
-                            <h5 class="price"><%=p.getPrice() %></h5>
-                            <h5 class="vendor"><%=p.getVendor() %></h5>
-                            <p class="card-text"><%=p.getDescription() %></p>
+                            <h5 class="card-title"><%=p.getSku() %></h5>
                             <div class=" mt-3 d-flex justify-content-between">
-                              <a href="cart.jsp" class="btn btn-primary">Add to cart</a>
-                              <a href="product.jsp" class="btn btn-primary">View product</a>
+                               <a href="cart.jsp" class="btn btn-primary">Add to cart</a>
                             </div>
                           </div>
                         </div>
