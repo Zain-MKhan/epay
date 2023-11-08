@@ -40,7 +40,7 @@ List<Product> products = pdobj.getAllProducts();
                             <h5 class="vendor"><%=p.getVendor() %></h5>
                             <p class="card-text"><%=p.getDescription() %></p>
                             <div class=" mt-3 d-flex justify-content-between">
-                              <a href="cart.jsp" class="btn btn-primary">Add to cart</a>
+                              <a href="cart?sku=<%=p.getSku()%>" class="btn btn-primary">Add to cart</a>
                               <a href="product.jsp" class="btn btn-primary">View product</a>
                             </div>
                           </div>
