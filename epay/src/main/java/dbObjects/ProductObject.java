@@ -17,27 +17,27 @@ public class ProductObject {
 
     public ProductObject(Connection connection) {
         super();
-		this.connection = connection;
-	}
+        this.connection = connection;
+    }
 
     public List<Product> getAllProducts() {
         List<Product> prdList = new ArrayList<>();
 
-            try {
+        try {
 
             myQuery = "select * from products";
             preparedStatement = this.connection.prepareStatement(myQuery);
             resultSet = preparedStatement.executeQuery();
 
-             while (resultSet.next()) {
-            	Product row = new Product();
+            while (resultSet.next()) {
+                Product row = new Product();
                 row.setSku(resultSet.getInt("sku"));
                 row.setName(resultSet.getString("name"));
                 row.setPrice(resultSet.getDouble("price"));
                 row.setDescription(resultSet.getString("description"));
                 row.setVendor(resultSet.getNString("vendor"));
                 row.setSlug(resultSet.getString("slug"));
-               // row.setImage(resultSet.getString("image"));
+                row.setImage(resultSet.getString("image"));
                 prdList.add(row);
             }
 
@@ -48,10 +48,6 @@ public class ProductObject {
 
         return prdList;
 
-
     }
 
-
-
-    
 }

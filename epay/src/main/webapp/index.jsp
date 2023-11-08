@@ -33,7 +33,7 @@ List<Product> products = pdobj.getAllProducts();
                     for (Product p: products){%>
                       <div class="col-sm-4">
                         <div class="card">
-                          <img class="card-img-top" src="prdimages/shop1.png" alt="img">
+                          <img class="card-img-top" src=<%=p.getImage()%> alt="img" style="width: 100%; height: 400px;">
                           <div class="card-body">
                             <h5 class="card-title"><%=p.getName() %></h5>
                             <h5 class="price"><%=p.getPrice() %></h5>
