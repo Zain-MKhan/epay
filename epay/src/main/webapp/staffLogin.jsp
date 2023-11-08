@@ -24,11 +24,11 @@
                     <form action="staff-login" method="post">
                         <div class="form-group">
                             <label>User Name</label> 
-                            <input type="text" name="login-staff-user" class="form-control" placeholder="hint:staff" required>
+                            <input type="text" name="login-staff-user" class="form-control" placeholder="hint:staff" value="staff" required>
                         </div>
                         <div class="form-group">
                             <label>Password</label> 
-                            <input type="password" name="login-staff-password" class="form-control" placeholder="hint:secret" required>
+                            <input type="password" name="login-staff-password" class="form-control" placeholder="hint:secret" value="secret" required>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Login</button>

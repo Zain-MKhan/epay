@@ -25,6 +25,9 @@
               <a class="nav-link" href="orders.jsp">Orders</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="createProduct.jsp">Create new product</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="staff-logout">Staff Logout</a>
             </li>
           <%}else{ %>
