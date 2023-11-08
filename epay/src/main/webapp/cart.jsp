@@ -8,7 +8,13 @@
 <% Customer authorizedCustomer = (Customer) request.getSession().getAttribute("authorizedCustomer"); 
     if (authorizedCustomer!=null){
         request.setAttribute("authorizedCustomer", authorizedCustomer);
-    } %>
+    } 
+%>
+<% Staff authorizedStaff = (Staff) request.getSession().getAttribute("authorizedStaff"); 
+    if (authorizedStaff!=null){
+        request.setAttribute("authorizedStaff", authorizedStaff);
+    } 
+%>
 
 <%    
     ArrayList<Cart> cl = (ArrayList<Cart>) session.getAttribute("somelist");

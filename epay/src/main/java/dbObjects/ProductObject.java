@@ -49,11 +49,9 @@ public class ProductObject {
 
         return prdList;
 
-        
     }
 
-
-        public List<Product> getSku() {
+    public List<Product> getSku() {
         List<Product> prdList = new ArrayList<>();
 
         try {
@@ -108,13 +106,5 @@ public class ProductObject {
         }
 
         return prdList;
-
-
-
-        
-
     }
-
-
-
 }

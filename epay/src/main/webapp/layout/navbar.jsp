@@ -20,9 +20,19 @@
             <li class="nav-item">
               <a class="nav-link" href="customer-logout">Logout</a>
             </li>
+          <%}else if(authorizedStaff != null){ %>
+            <li class="nav-item">
+              <a class="nav-link" href="orders.jsp">Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="staff-logout">Staff Logout</a>
+            </li>
           <%}else{ %>
             <li class="nav-item">
               <a class="nav-link" href="customerLogin.jsp">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="staffLogin.jsp">Staff Login</a>
             </li>
           <% } %>
         </ul>
