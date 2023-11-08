@@ -10,7 +10,6 @@
         request.setAttribute("authorizedCustomer", authorizedCustomer);
     } 
     %>
-
 <%
 
     
@@ -29,39 +28,33 @@ List<Product> products = pdobj.getAllProducts();
 
 <h1>Products</h1>
 <div class = "container">
-<div class="row">
-    <%
-    if(!products.isEmpty()){
-        for (Product p: products){%>
-            <div class="col-sm-6">
-                <div class="card">
-                  <img class="card-img-top" src="prdimages/shop1.png" alt="img">
-                  <div class="card-body">
-                    <h5 class="card-title"><%=p.getName() %></h5>
-                    <h5 class="price"><%=p.getPrice() %></h5>
-                    <h5 class="vendor"><%=p.getVendor() %></h5>
-                    <p class="card-text"><%=p.getDescription() %></p>
-                    <div class=" mt-3 d-flex justify-content-between">
-                      <a href="cart.jsp" class="btn btn-primary">Add to cart</a>
-                      <a href="#" class="btn btn-primary">View product</a>
-                    </div>
+  <div class="row">
+      <%
+      if(!products.isEmpty()){
+          for (Product p: products){%>
+            <div class="col-sm-4">
+              <div class="card">
+                <img class="card-img-top" src="prdimages/shop1.png" alt="img">
+                <div class="card-body">
+                  <h5 class="card-title"><%=p.getName() %></h5>
+                  <h5 class="price"><%=p.getPrice() %></h5>
+                  <h5 class="vendor"><%=p.getVendor() %></h5>
+                  <p class="card-text"><%=p.getDescription() %></p>
+                  <div class=" mt-3 d-flex justify-content-between">
+                    <a href="cart.jsp" class="btn btn-primary">Add to cart</a>
+                    <a href="#" class="btn btn-primary">View product</a>
                   </div>
                 </div>
-      <%}
-    }else {
-        out.println("none");
-        }
+              </div>
+            </div>
+        <%}
+      }else {
+          out.println("none");
+          }
 
-    %>
-
-
-    
-  
+      %>
   </div>
 </div>
-
-    </div>
-
     <p>delete below after.</p>
     <% out.print(dbConnection.getConnection());%>
 
