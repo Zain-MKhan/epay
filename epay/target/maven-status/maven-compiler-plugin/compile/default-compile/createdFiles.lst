@@ -1,4 +1,5 @@
 dbObjects\CustomerObject.class
+servlets\productsSlugServlet.class
 business\Product.class
 connection\dbConnection.class
 servlets\productsServlet.class
