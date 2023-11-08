@@ -125,7 +125,7 @@ public class ProductObject {
         try {
             if (cL.size() > 0) {
                 for (Cart item : cL) {
-                    myQuery = "select * from products where id=?";
+                    myQuery = "select * from products where sku=?";
                     preparedStatement = this.connection.prepareStatement(myQuery);
                     preparedStatement.setInt(1, item.getSku());
                     resultSet = preparedStatement.executeQuery();
@@ -151,4 +151,5 @@ public class ProductObject {
 
         return prdList;
     }
+
 }
