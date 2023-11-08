@@ -39,7 +39,7 @@
   <body>
     <%@include file="layout/navbar.jsp"%>
     <div class="container">
-        <div class=" d-flex py-3"><h3>Total price</h3><a class="mx-3 btn btn-primary" href="#">Confirm</a></div>
+        <div class=" d-flex py-3"><h3>Welcome to the Cart Page</h3></div>
 
 
         <table class="table table-light">
@@ -49,8 +49,8 @@
                 <th scope="col">Description</th>
                 <th scope="col">Vendor</th>
                 <th scope="col">Price</th>
-                <th scope="col">TBD</th>
-                <th scope="col">Cancel</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Remove from Cart</th>
               </tr>
             </thead>
     
@@ -68,7 +68,7 @@
                             <td>
               
                                 <form action="" method="post" class="form-inline">
-                                <input type="hidden" name="sku" value="<%=c.getSku()%>" class="form-input">
+                                <input type="hidden" name="slug" value="<%=c.getSlug()%>" class="form-input">
                                 <div class="form-group d-flex justify-content-between">
                   
                                   <a class="btn btn-sm btn-incre" href="#"><i class="fas fa-plus-square"></i></a>
@@ -76,6 +76,10 @@
                                   <a class="btn btn-sm btn-incre" href="#"><i class="fas fa-minus-square"></i></a>
                                 </div>
                                 </form>
+                              </td>
+
+                              <td>
+                                <a class="mx-3 btn btn-primary" href="#">Remove</a>
                               </td>
                         </tr>
 
