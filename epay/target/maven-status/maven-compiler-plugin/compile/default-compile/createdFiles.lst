@@ -13,3 +13,4 @@ dbObjects\ProductObject.class
 servlets\StaffLoginServlet.class
 servlets\StaffLogoutServlet.class
 servlets\CustomerLogoutServlet.class
+servlets\cartServletDelete.class
