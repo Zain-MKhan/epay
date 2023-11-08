@@ -48,6 +48,38 @@ public class ProductObject {
 
         return prdList;
 
+        
     }
+
+
+        public List<Product> getSku() {
+        List<Product> prdList = new ArrayList<>();
+
+        try {
+
+            myQuery = "select sku from products";
+            preparedStatement = this.connection.prepareStatement(myQuery);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Product row = new Product();
+                row.setSku(resultSet.getInt("sku"));
+                prdList.add(row);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
+        return prdList;
+
+
+
+        
+
+    }
+
+
 
 }
