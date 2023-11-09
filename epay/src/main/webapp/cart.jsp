@@ -1,6 +1,6 @@
 <%@page import="connection.dbConnection" %>
 <%@page import="dbObjects.ProductObject" %>
-
+<%@ page isELIgnored="false" %>
 <%@page import="business.*" %>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -40,7 +40,13 @@
     <%@include file="layout/navbar.jsp"%>
     <div class="container">
         <div class=" d-flex py-3"><h3>Welcome to the Cart Page</h3></div>
-
+        <div class="card">
+          <div class="card-body d-flex justify-content-between">
+              <h3 class="card-title">Total Price</h3>
+              <h3 class="card-text">$ <%= session.getAttribute("totalCartPrice") %></h3>
+              <a href="#" class="btn btn-primary">Checkout</a>
+          </div>
+      </div>
 
         <table class="table table-light">
             <thead>

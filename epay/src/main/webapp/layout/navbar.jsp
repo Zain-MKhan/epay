@@ -1,3 +1,4 @@
+<%@ page isELIgnored="false" %>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="products">Epay</a>
@@ -10,7 +11,7 @@
             <a class="nav-link active" aria-current="page" href="products">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cart.jsp">Cart</a>
+            <a class="nav-link" href="cart.jsp">Cart <span class="badge bg-secondary">${somelist.size()}</span></a>
           </li>
          
           <%if(authorizedCustomer != null){ %>
