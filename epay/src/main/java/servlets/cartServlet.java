@@ -5,9 +5,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import business.Cart;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpSession;
 
-@jakarta.servlet.annotation.WebServlet("/cart")
+@WebServlet("/cart")
 public class cartServlet extends jakarta.servlet.http.HttpServlet{
 
     protected void doGet(jakarta.servlet.http.HttpServletRequest request,jakarta.servlet.http.HttpServletResponse response) throws IOException, ServletException {
@@ -41,7 +42,7 @@ public class cartServlet extends jakarta.servlet.http.HttpServlet{
                 
                 for(Cart c: cList){
 
-                    if (c.getSlug()==slug){
+                    if (c.getSlug().equals(slug)){
                         stop=true;
                         out.println("<h3 text-align: center'>Thing is already in yo Cart. <a href='cart.jsp'>Travel to CART</a></h3>");
 
