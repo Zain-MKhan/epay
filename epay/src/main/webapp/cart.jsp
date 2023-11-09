@@ -79,7 +79,7 @@
                               </td>
 
                               <td>
-                                <a class="mx-3 btn btn-primary" href="cartdel/slug=<%=c.getSlug()%>">Remove</a>
+                                <a class="mx-3 btn btn-primary" href="cartdel/<%=c.getSlug()%>">Remove</a>
                               </td>
                         </tr>
 
