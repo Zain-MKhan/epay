@@ -57,6 +57,13 @@
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Remove from Cart</th>
+                <%if(authorizedCustomer != null){ %>
+                <th scope="col">Shipping Address</th>
+                <th scope="col">Order</th>
+                <%}%>
+                <%if(authorizedCustomer == null){ %>
+                  <th scope="col">Login to place order!</th>
+                <%}%>
               </tr>
             </thead>
     
@@ -87,6 +94,14 @@
                               <td>
                                 <a class="mx-3 btn btn-primary" href="cartdel?slug=<%=c.getSlug()%>">Remove</a>
                               </td>
+                              <%if(authorizedCustomer != null){ %>
+                              <td>
+                                <input type="text" id="address" name="address" placeholder="Enter shipping address" />
+                              </td>
+                              <td>
+                                <button class="mx-3 btn btn-primary" id="orderButton" disabled>Order</button>
+                              </td>
+                              <%}%>
                         </tr>
 
                    <% }
@@ -98,5 +113,22 @@
     </div>
 
     <%@include file="layout/footer.jsp"%>
+    <script>
+      // Get a reference to the address input and the order button
+      var addressInput = document.getElementById("address");
+      var orderButton = document.getElementById("orderButton");
+    
+      // Add an event listener to the address input
+      addressInput.addEventListener("input", function() {
+        // Check if the address input is not empty
+        if (addressInput.value.trim() !== "") {
+          // Enable the "Order" button
+          orderButton.removeAttribute("disabled");
+        } else {
+          // Disable the "Order" button
+          orderButton.setAttribute("disabled", "disabled");
+        }
+      });
+    </script>
   </body>
 </html>
