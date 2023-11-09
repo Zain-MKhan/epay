@@ -8,6 +8,7 @@ dbObjects\StaffObject.class
 servlets\productsSlugServlet.class
 business\Product.class
 connection\dbConnection.class
+servlets\cartQuantityServlet.class
 business\Customer.class
 dbObjects\ProductObject.class
 servlets\StaffLoginServlet.class

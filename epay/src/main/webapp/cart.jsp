@@ -23,7 +23,9 @@
       if (cl != null) {
         ProductObject pdobj = new ProductObject(dbConnection.getConnection());
         cartProduct = pdobj.getCartProducts(cl);
+        double total = pdobj.getTotal(cl);
         request.setAttribute("somelist", cl); 
+        request.setAttribute("total", total); 
       }    
     
 %>
@@ -43,7 +45,7 @@
         <div class="card">
           <div class="card-body d-flex justify-content-between">
               <h3 class="card-title">Total Price</h3>
-              <h3 class="card-text">$ <%= session.getAttribute("totalCartPrice") %></h3>
+              <h3 class="card-text"><%=request.getAttribute("total")  %></h3>
               <a href="#" class="btn btn-primary">Checkout</a>
           </div>
       </div>
@@ -59,13 +61,10 @@
                 <th scope="col">Remove from Cart</th>
               </tr>
             </thead>
-    
             <tbody>
                 <%
                 if(cl!=null){
                     for(Cart c: cartProduct){%>
-
-
                         <tr>
                             <td><%=c.getName()%></td>
                             <td><%=c.getDescription()%></td>
@@ -77,9 +76,9 @@
                                 <input type="hidden" name="slug" value="<%=c.getSlug()%>" class="form-input">
                                 <div class="form-group d-flex justify-content-between">
                   
-                                  <a class="btn btn-sm btn-incre" href="#"><i class="fas fa-plus-square"></i></a>
-                                  <input type="text" name="quantity" class="form-control"  value="1" readonly>
-                                  <a class="btn btn-sm btn-incre" href="#"><i class="fas fa-minus-square"></i></a>
+                                  <a class="btn btn-sm btn-incre" href="cartq? act= inc& sku=<%=c.getSku()%>"><i class="fas fa-plus-square"></i></a>
+                                  <input type="text" name="quantity" class="form-control"  value="<%=c.getQuantity()%>" readonly>
+                                  <a class="btn btn-sm btn-incre" href="cartq?act=dec&sku= <%=c.getSku()%>"><i class="fas fa-minus-square"></i></a>
                                 </div>
                                 </form>
                               </td>
