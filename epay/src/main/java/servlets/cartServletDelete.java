@@ -8,7 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet("/cartdel/*")
+@WebServlet("/cartdel")
 public class cartServletDelete extends jakarta.servlet.http.HttpServlet{
 
     protected void doGet(jakarta.servlet.http.HttpServletRequest request,jakarta.servlet.http.HttpServletResponse response) throws IOException, ServletException {
@@ -16,8 +16,10 @@ public class cartServletDelete extends jakarta.servlet.http.HttpServlet{
         response.setContentType("text/html;charset=UTF-8");
 		try (PrintWriter out = response.getWriter()) {
 			String slug = request.getParameter("slug");
+			
 			if (slug != null) {
-				ArrayList<Cart> cl = (ArrayList<Cart>) request.getSession().getAttribute("somelist");
+				HttpSession session = request.getSession();
+				ArrayList<Cart> cl =  (ArrayList<Cart>) session.getAttribute("somelist");
 
 				if (cl != null) {
 					for (Cart c : cl) {
