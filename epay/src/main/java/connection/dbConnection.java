@@ -13,7 +13,7 @@ public class dbConnection {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // replace 'cocacola' with your own password for root in your mysql:
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/epay_db", "root", "1234");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/epay_db", "dbuser", "dbpass");
             System.out.println("Successfully connected to epay_db!");
         }
         return connection;
