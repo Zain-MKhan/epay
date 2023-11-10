@@ -10,11 +10,11 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="products">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cart.jsp">Cart <span class="badge bg-secondary">${somelist.size()}</span></a>
-          </li>
          
           <%if(authorizedCustomer != null){ %>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.jsp">Cart <span class="badge bg-secondary">${somelist.size()}</span></a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="orders.jsp">Orders</a>
             </li>
@@ -35,6 +35,9 @@
               <a class="nav-link" href="staff-logout">Staff Logout</a>
             </li>
           <%}else{ %>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.jsp">Cart <span class="badge bg-secondary">${somelist.size()}</span></a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="customerLogin.jsp">Login</a>
             </li>

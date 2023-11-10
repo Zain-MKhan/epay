@@ -50,7 +50,9 @@ ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
                             <p class="card-text"><%=p.getDescription() %></p>
                             <div class=" mt-3 d-flex justify-content-between">
                               <a href="products/<%=p.getSlug()%>" class="btn btn-primary">View product</a>
-                              <a href="cart?slug=<%=p.getSlug()%>&sku=<%=p.getSku()%>" class="btn btn-primary">Add to cart</a>
+                              <%if(authorizedStaff == null){ %>
+                                <a href="cart?slug=<%=p.getSlug()%>&sku=<%=p.getSku()%>" class="btn btn-primary">Add to cart</a>
+                              <%}%>
                             </div>
                           </div>
                         </div>
