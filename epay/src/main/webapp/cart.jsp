@@ -83,9 +83,9 @@
                                 <input type="hidden" name="slug" value="<%=c.getSlug()%>" class="form-input">
                                 <div class="form-group d-flex justify-content-between">
                   
-                                  <a class="btn btn-sm btn-incre" href="cartq? act= inc& sku=<%=c.getSku()%>"><i class="fas fa-plus-square"></i></a>
+                                  <a class="btn btn-sm btn-incre" href="cartDec/<%=c.getSku()%>"><i class="fas fa-minus-square"></i></a>
                                   <input type="text" name="quantity" class="form-control"  value="<%=c.getQuantity()%>" readonly>
-                                  <a class="btn btn-sm btn-incre" href="cartq?act=dec&sku= <%=c.getSku()%>"><i class="fas fa-minus-square"></i></a>
+                                  <a class="btn btn-sm btn-incre" href="cartInc/<%=c.getSku()%>"><i class="fas fa-plus-square"></i></a>
                                 </div>
                                 </form>
                               </td>

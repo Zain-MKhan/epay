@@ -8,6 +8,11 @@
     if (authorizedStaff!=null){
         request.setAttribute("authorizedStaff", authorizedStaff);
     } 
+
+ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
+	if (somelist != null) {
+		request.setAttribute("somelist", somelist);
+	}  	
 %>
 
 <!doctype html>

@@ -17,7 +17,12 @@
 %>    
 <%    
 ProductObject pdobj = new ProductObject(dbConnection.getConnection());
-List<Product> products = pdobj.getAllProducts();   
+List<Product> products = pdobj.getAllProducts();  
+    
+ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
+    if (somelist != null) {
+        request.setAttribute("somelist", somelist);
+    }  
 %>
 
 <!doctype html>
