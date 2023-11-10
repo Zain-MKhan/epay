@@ -46,7 +46,7 @@ ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
                         </div>
                         <div class="form-group">
                             <label for="sku">Slug:</label>
-                            <input type="text" class="form-control" id="slug" name="sku">
+                            <input type="text" class="form-control" id="slug" name="slug">
                         </div>
                         <div class="form-group">
                             <label for="name">Name:</label>

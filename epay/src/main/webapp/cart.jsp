@@ -35,7 +35,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Orders</title>
+    <title>Cart</title>
     <%@include file="layout/header.jsp"%>
   </head>
   <body>
@@ -48,12 +48,17 @@
               <h3 class="card-title">Total Price: </h3>
               <h3 class="card-text"><%=request.getAttribute("total")%></h3>
             </div>
-              <%if(authorizedCustomer != null){ %>
-              <div>
-                <input type="text" id="address" name="address" placeholder="Enter shipping address" />
-                <button class="mx-3 btn btn-primary" id="orderButton" disabled>Order</button>
-              </div>
-              <%} else{%>
+              <%if(authorizedCustomer != null && cl.size()>=1){ %>
+                <form action="shippingAddress" method="get">
+                  <div>
+                      <input type="text" id="address" name="address" placeholder="Enter shipping address" />
+                  </div>
+                  <button type="submit" class="mx-3 btn btn-primary" id="addressButton" disabled>Confirm address</button>
+              </form>              
+              <button class="mx-3 btn btn-primary" id="orderButton" disabled>Order</button>
+              <%}else if(authorizedCustomer != null && cl.size()<1){%>
+                <h3 class="card-text">Add items to cart to place order</h3>
+              <%}else {%>
                 <h3 class="card-text">Login to place order!</h3>
               <%}%>
           </div>
@@ -107,21 +112,38 @@
 
     <%@include file="layout/footer.jsp"%>
     <script>
-      // Get a reference to the address input and the order button
       var addressInput = document.getElementById("address");
+      var addressButton = document.getElementById("addressButton");
       var orderButton = document.getElementById("orderButton");
     
-      // Add an event listener to the address input
       addressInput.addEventListener("input", function() {
-        // Check if the address input is not empty
         if (addressInput.value.trim() !== "") {
-          // Enable the "Order" button
-          orderButton.removeAttribute("disabled");
+          addressButton.removeAttribute("disabled");
         } else {
-          // Disable the "Order" button
-          orderButton.setAttribute("disabled", "disabled");
+          addressButton.setAttribute("disabled", "disabled");
         }
       });
+    
+      addressButton.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent the default action of the button
+    
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "shippingAddress?address=" + addressInput.value, true);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            orderButton.removeAttribute("disabled");
+          }
+        };
+        xhr.send();
+    
+        return false;
+      });
+    
+      orderButton.setAttribute("disabled", "disabled");
+      orderButton.addEventListener("click", function() {
+        window.location.href = "check-out"; // Redirect to checkout when the button is clicked
+      });
     </script>
+    
   </body>
 </html>
