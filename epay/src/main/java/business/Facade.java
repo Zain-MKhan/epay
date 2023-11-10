@@ -15,7 +15,7 @@ public class Facade {
 
     public Facade() {
 
-  }
+    }
 
     public Product CreateProduct(int sku, String name){
 
@@ -34,7 +34,7 @@ public class Facade {
 
         //can prob error handle here
           System.out.println("prd dne ske dne.");
-          }
+        }
       }
 
   
@@ -49,7 +49,7 @@ public class Facade {
       return null;
     }
 
-      public Object getProductWithSlug(String slug) {
+    public Object getProductWithSlug(String slug) {
 
       List<Product> products = new  ArrayList<>();
       for (Product product : products) {
@@ -62,8 +62,8 @@ public class Facade {
 
 
     public List<Product> getCart(int user) {
-        Cart userCart = getCartByUser(user);
-        return userCart.getAllProducts();
+      Cart userCart = getCartByUser(user);
+      return userCart.getAllProducts();
     }
 
     private Cart getCartByUser(int user) {
@@ -85,29 +85,83 @@ public class Facade {
 
             System.out.println("prd not added function.");
       }
+     }
 
-
-  }
-
-  public void removeProductFromCart(int user, int sku) {
+    public void removeProductFromCart(int user, int sku) {
     Cart userCart = getCartByUser(user);
     if (userCart != null) {
         userCart.removeProduct(sku);
     }else{
+       //can prob error handle here
        System.out.println("nothing will be perfomed. for car removval.");
+      }
     }
 
-    
-}
+    public void setProductQuantityInCart(int user, int sku, int quantity) {
+          Cart userCart = (Cart) getCart(user);
+          userCart.setQuantity(quantity);
+      }
 
+     public void clearCart(int user) {
+          Cart c = getCartByUser(user);
+          if (c != null) {
+              cart.remove(c);
+          }
+      }
 
+    public void createOrder(int user, String shippingAddress) {
+        Cart userCart = getCartByUser(user);
+        if (userCart != null) {
 
+          Order order = new Order(user,shippingAddress);
+          order.addProduct(userCart);
+          clearCart(user);
+        }
+    }
+
+    public List<Order> getOrders(int user) {
+      List<Order> userOrders = new ArrayList<>();
+      for (Order order : order) {
+          if (order.getUser(user)==(user)) {
+              userOrders.add(order);
+          }
+      }
+      return userOrders;
+    }
+
+    public Order getOrder(String user, int orderId) {
+      for (Order order : order) {
+        if (order.getOrderId() == orderId) {
+
+          if(order.getUsername.equals(user)){
+            order.toString();
+            return order;
+          }
+          
+        }else{
+              //can prob error handle here
+       System.out.println("nothing will be perfomed. for car removval.");
+       return null;
+        }
+
+      }
+      return null;
+    }
+
+    public Order ShipOrder(int id, int trackingNumber) {
+   
+      for (Order order : order) {
+          if (order.getOrderId() == id) {
+            order.setStatus("Shipped");
+            order.setTrackingNumber(trackingNumber);
+            System.out.println("order id=" +order.getOrderId()+" Status=" + order.getStatus()+ "Tracking number will be: " + order.getTrackingNumber());
+            return order;
+          }
+      }
+      System.out.println("it wasnt found sadge");
+      return null;
+     }
   
-
-
-
-
-
 
 
 
