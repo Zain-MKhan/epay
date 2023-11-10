@@ -1,0 +1,282 @@
+@startuml
+
+package business{
+
+
+
+ class Product {
+
+
+	private List<Product> products = new ArrayList<>();
+  private int sku;
+	private String name;
+	private Double price;
+  private String description;
+  private String vendor;
+  private String slug;
+	private String image;
+
+
+  public Product()
+
+
+	public Product(int sku, String name) 
+	
+	public Product(int sku, String name, Double price,String description,String vendor,String slug, String image)
+
+	public Product(int sku, String name, Double price,String vendor,String slug) 
+
+	public void UpdateProduct(int sku, String name, Double price,String description,String vendor,String slug, String image)
+
+	public String getProduct(int sku) 
+
+  public int getSku() 
+  
+	public void setSku(int sku) 
+
+	public String getName() 
+
+	public void setName(String name) 
+
+	public Double getPrice() 
+	
+	public void setPrice(Double price)
+	
+	public String getDescription() 
+
+	public void setDescription(String description) 
+    
+	public String getVendor()
+
+	public void setVendor(String vendor)
+    
+	public String getSlug()
+
+	public void setSlug(String slug)
+    
+	public String getImage()
+
+	public void setImage(String image)
+
+
+	public String toString()
+    
+}
+
+
+
+
+ class Cart extends Product {
+
+	private int quantity;
+	private String shippingAddress;
+	public long userId;
+	private List<Product> allProducts = new ArrayList<>();
+
+	public Cart()
+	public Cart(long userId)
+
+	public List<Product> getAllProducts() 
+
+	public int getQuantity() 
+
+	public void setQuantity(int quantity) 
+
+	public String getShippingAddress()
+
+	public void setShippingAddress(String shippingAddress) 
+
+	public int getUserId(long userId) 
+
+	public void addProduct(Product product)
+
+  public void removeProduct(int sku) 
+  
+  
+
+
+	
+
+
+}
+
+
+ class User {
+    private long userId; // Unique identifier for the user
+    private String username; // User's username
+    private String email; // User's email address
+    private String password; // User's password (hash or encrypted)
+
+   
+    public User()
+    // Constructor
+    public User(long userId, String username, String email, String password) 
+
+
+    public User(User u, long userId, String username, String email, String password) 
+
+
+    public long getUserId() 
+
+    public void setUserId(long userId)
+    public String getUsername() 
+
+    public void setUsername(String username)
+
+    public String getEmail() 
+
+    public void setEmail(String email)
+
+    public String getPassword() 
+    public void setPassword(String password)
+
+    public boolean authenticate(String inputPassword)
+
+    
+   
+    public String toString() 
+
+}
+
+
+
+ class Staff extends User{
+    private String userName;
+    private String password;
+
+    public Staff(String userName, String password)
+
+    public Staff() 
+    public String getUserName() 
+
+    public void setUserName(String userName)
+    public String getPassword() 
+
+    public void setPassword(String password)
+
+    public String toString() 
+}
+
+
+
+ class Customer extends User{
+    private String email;
+    private String password;
+
+    public Customer(String email, String password)
+
+    public Customer() 
+
+    public String getEmail() 
+
+    public void setEmail(String email) 
+    public String getPassword() 
+    public void setPassword(String password) 
+
+
+    public String toString() 
+}
+
+
+
+
+ class Order extends Cart {
+    private int orderId;
+    private String email;
+    private int quantity;
+    private String date;
+    private int trackingNumber;
+    private String status;
+  
+    private List<String> allProducts;
+    public Object getUsername;
+
+    public Order() 
+
+    public Order(int user,String shippingAddress) 
+
+    public Order(int orderId, String email, int quantity, String date) 
+
+  
+    public Order(List<String> allProducts)
+
+    public List<String> getOrder() 
+
+
+    public int getOrderId() 
+
+    public void setOrderId(int orderId)
+
+    public String getEmail() 
+    
+    public void setEmail(String email)
+
+    public int getQuantity() 
+
+    public void setQuantity(int qunatity) 
+
+    public String getDate() 
+
+    public void setDate(String date)
+
+    public int getTrackingNumber() 
+
+    public void setTrackingNumber(int trackingNumber)
+
+    public int getUser(int user) 
+
+    public String getStatus() 
+
+    public void setStatus(String status) 
+}
+
+
+
+ class Facade {
+
+
+    private List<Product> products = new ArrayList<>();
+    private List<Customer> customers = new ArrayList<>();
+    private List<User> user = new ArrayList<>();
+    private List<Cart> cart = new ArrayList<>();
+    private List<Order> order = new ArrayList<>();
+
+
+    public Facade()
+
+    public Product CreateProduct(int sku, String name)
+
+    public void updateProduct(int sku, String name, Double price, String description, String vendor, String slug, String image) 
+
+    public Object getProductWithSku(int sku) 
+
+    public Object getProductWithSlug(String slug) 
+
+    public List<Product> getCart(int user) 
+
+    private Cart getCartByUser(int user)
+    
+    public void addProductToCart(int user, int sku)
+    
+    public void removeProductFromCart(int user, int sku)
+    
+    public void setProductQuantityInCart(int user, int sku, int quantity) 
+
+    public void clearCart(int user) 
+
+    public void createOrder(int user, String shippingAddress) 
+
+    public List<Order> getOrders(int user) 
+
+    public Order getOrder(String user, int orderId)
+    
+    public Order ShipOrder(int id, int trackingNumber)
+  
+
+    
+}
+
+}
+
+
+@enduml
