@@ -44,9 +44,18 @@
         <div class=" d-flex py-3"><h3>Welcome to the Cart Page</h3></div>
         <div class="card">
           <div class="card-body d-flex justify-content-between">
-              <h3 class="card-title">Total Price</h3>
-              <h3 class="card-text"><%=request.getAttribute("total")  %></h3>
-              <a href="#" class="btn btn-primary">Checkout</a>
+            <div>
+              <h3 class="card-title">Total Price: </h3>
+              <h3 class="card-text"><%=request.getAttribute("total")%></h3>
+            </div>
+              <%if(authorizedCustomer != null){ %>
+              <div>
+                <input type="text" id="address" name="address" placeholder="Enter shipping address" />
+                <button class="mx-3 btn btn-primary" id="orderButton" disabled>Order</button>
+              </div>
+              <%} else{%>
+                <h3 class="card-text">Login to place order!</h3>
+              <%}%>
           </div>
       </div>
 
@@ -59,13 +68,6 @@
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Remove from Cart</th>
-                <%if(authorizedCustomer != null){ %>
-                <th scope="col">Shipping Address</th>
-                <th scope="col">Order</th>
-                <%}%>
-                <%if(authorizedCustomer == null){ %>
-                  <th scope="col">Login to place order!</th>
-                <%}%>
               </tr>
             </thead>
             <tbody>
@@ -93,14 +95,6 @@
                               <td>
                                 <a class="mx-3 btn btn-primary" href="cartdel?slug=<%=c.getSlug()%>">Remove</a>
                               </td>
-                              <%if(authorizedCustomer != null){ %>
-                              <td>
-                                <input type="text" id="address" name="address" placeholder="Enter shipping address" />
-                              </td>
-                              <td>
-                                <button class="mx-3 btn btn-primary" id="orderButton" disabled>Order</button>
-                              </td>
-                              <%}%>
                         </tr>
 
                    <% }
