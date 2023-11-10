@@ -1,7 +1,12 @@
 package business;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Product {
 
+
+	private List<Product> products = new ArrayList<>();
     private int sku;
 	private String name;
 	private Double price;
@@ -13,6 +18,17 @@ public class Product {
 
     public Product() {
 	}
+
+
+	 public Product(int sku, String name) {
+
+		super();
+		this.sku=sku;
+		this.name=name;
+		
+	}
+	
+
 	
 	public Product(int sku, String name, Double price,String description,String vendor,String slug, String image) {
 		super();
@@ -27,6 +43,36 @@ public class Product {
 	}
 
 
+		public Product(int sku, String name, Double price,String vendor,String slug) {
+		super();
+		this.sku = sku;
+		this.name = name;
+		this.price = price;
+        this.vendor=vendor;
+        this.slug= slug;
+
+	}
+
+	public void UpdateProduct(int sku, String name, Double price,String description,String vendor,String slug, String image){
+		this.sku=sku;
+		this.name = name;
+		this.price = price;
+		this.description = description;
+		this.vendor = vendor;
+		this.slug = slug;
+		this.image = image;
+	}
+
+	public String getProduct(int sku) {
+
+		List<Product> products = new  ArrayList<>();
+		for (Product product : products) {
+			if (product.getSku() == sku) {
+				return product.toString();
+			}
+		}
+		return null;
+	}
 
     public int getSku() {
 		return sku;
@@ -89,7 +135,7 @@ public class Product {
 
     @Override
 	public String toString() {
-		return "Product [sku=" + sku + ", name=" + name + ", price=" + price + ", image="
+		return "Product [sku=" + sku + ", name=" + name + ", price=" + price + ", description=" + description + ", vendor=" + vendor +",  image="
 				+ image + "]";
 	}
     
