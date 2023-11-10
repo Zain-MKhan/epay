@@ -1,4 +1,5 @@
 <%@page import="business.*" %>
+<%@page import="java.util.ArrayList" %>
 <% Customer authorizedCustomer = (Customer) request.getSession().getAttribute("authorizedCustomer"); 
     if (authorizedCustomer!=null){
 		response.sendRedirect("index.jsp");
