@@ -56,11 +56,13 @@
                   <button type="submit" class="mx-3 btn btn-primary" id="addressButton" disabled>Confirm address</button>
               </form>              
               <button class="mx-3 btn btn-primary" id="orderButton" disabled>Order</button>
-              <%}else if(authorizedCustomer != null && (cl!=null || cl.size()<1)){%>
-                <h3 class="card-text">Add items to cart to place order</h3>
+              <%}else if(cl!=null){
+                if(authorizedCustomer != null && (cl!=null || cl.size()<1)){%>
+                  <h3 class="card-text">Add items to cart to place order</h3>
               <%}else {%>
                 <h3 class="card-text">Login to place order!</h3>
-              <%}%>
+              <%}
+              }%>
           </div>
       </div>
 

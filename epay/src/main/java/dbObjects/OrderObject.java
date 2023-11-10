@@ -57,6 +57,7 @@ public class OrderObject {
                 myOrder.setDate(resultSet.getString("date"));
                 myOrder.setShippingAddress(resultSet.getString("shippingAddress"));
                 myOrder.setEmail(resultSet.getString("email"));
+                myOrder.setTrackingNumber(resultSet.getInt("trackingNumber"));
                 orderList.add(myOrder);
             }
         } catch (Exception e) {
@@ -82,6 +83,7 @@ public class OrderObject {
                 myOrder.setDate(resultSet.getString("date"));
                 myOrder.setShippingAddress(resultSet.getString("shippingAddress"));
                 myOrder.setEmail(resultSet.getString("email"));
+                myOrder.setTrackingNumber(resultSet.getInt("trackingNumber"));
                 orderList.add(myOrder);
             }
         } catch (Exception e) {
@@ -90,4 +92,24 @@ public class OrderObject {
 
         return orderList;
     }
+
+    // for staff members
+    public boolean updateTrackingNumber(int orderId, int trackingNumber) {
+        boolean result = false;
+        try {
+            myQuery = "UPDATE orders SET trackingNumber = ? WHERE orderid = ?";
+            preparedStatement = this.connection.prepareStatement(myQuery);
+            preparedStatement.setInt(1, trackingNumber);
+            preparedStatement.setInt(2, orderId);
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                result = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 }
