@@ -8,11 +8,17 @@ public class Order extends Cart {
     private int quantity;
     private String date;
     private int trackingNumber;
+    private String status;
     // private String shippingAddress;
 
     private List<String> allProducts;
+    public Object getUsername;
 
     public Order() {
+    }
+
+    public Order(int user,String shippingAddress) {
+
     }
 
     public Order(int orderId, String email, int quantity, String date) {
@@ -77,5 +83,17 @@ public class Order extends Cart {
 
     public void setTrackingNumber(int trackingNumber) {
         this.trackingNumber = trackingNumber;
+    }
+
+    public int getUser(int user) {
+        return user;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
