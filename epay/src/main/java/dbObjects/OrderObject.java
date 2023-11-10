@@ -55,6 +55,8 @@ public class OrderObject {
                 myOrder.setSku(resultSet.getInt("productsku"));
                 myOrder.setQuantity(resultSet.getInt("quantity"));
                 myOrder.setDate(resultSet.getString("date"));
+                myOrder.setShippingAddress(resultSet.getString("shippingAddress"));
+                myOrder.setEmail(resultSet.getString("email"));
                 orderList.add(myOrder);
             }
         } catch (Exception e) {
@@ -65,7 +67,7 @@ public class OrderObject {
     }
 
     // for staff members
-    public List<Order> userOrders() {
+    public List<Order> allOrders() {
         List<Order> orderList = new ArrayList<>();
         try {
             myQuery = "select * from orders";
@@ -78,6 +80,8 @@ public class OrderObject {
                 myOrder.setSku(resultSet.getInt("productsku"));
                 myOrder.setQuantity(resultSet.getInt("quantity"));
                 myOrder.setDate(resultSet.getString("date"));
+                myOrder.setShippingAddress(resultSet.getString("shippingAddress"));
+                myOrder.setEmail(resultSet.getString("email"));
                 orderList.add(myOrder);
             }
         } catch (Exception e) {
