@@ -1,12 +1,15 @@
 business\Order.class
 dbObjects\CustomerObject.class
+business\CustomNullCartExceptions.class
 business\Driver.class
 servlets\productsServlet.class
+business\CustomNullProductExceptions.class
 servlets\CustomerLoginServlet.class
 dbObjects\StaffObject.class
 business\Product.class
 business\Facade.class
 connection\dbConnection.class
+business\CustomNullOrderExceptions.class
 business\Customer.class
 dbObjects\ProductObject.class
 servlets\StaffLogoutServlet.class
@@ -19,6 +22,7 @@ business\Cart.class
 servlets\checkOutServlet.class
 dbObjects\OrderObject.class
 servlets\cartQuantityDecreaseServlet.class
+business\CustomUnmatchedIDException.class
 servlets\productsSlugServlet.class
 servlets\shippingAddressServlet.class
 servlets\StaffLoginServlet.class
