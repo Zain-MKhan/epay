@@ -12,7 +12,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet("/check-out")
+@WebServlet("/order")
 public class checkOutServlet extends jakarta.servlet.http.HttpServlet {
 
     protected void doGet(jakarta.servlet.http.HttpServletRequest request,

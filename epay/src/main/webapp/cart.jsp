@@ -143,7 +143,7 @@
     
       orderButton.setAttribute("disabled", "disabled");
       orderButton.addEventListener("click", function() {
-        window.location.href = "check-out"; // Redirect to checkout when the button is clicked
+        window.location.href = "order"; // Redirect to checkout when the button is clicked
       });
     </script>
     
