@@ -30,11 +30,13 @@ ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
   <head>
     <title>Epay</title>
     <%@include file="layout/header.jsp"%>
+    <link href="index.css" rel="stylesheet" type="text/css"/>
+
   </head>
   <body>
     <%@include file="layout/navbar.jsp"%>
 
-          <h1>Products</h1>
+          <h1 class="headerText">Product Display</h1>
           <div class = "container">
             <div class="row">
                 <%
@@ -66,5 +68,56 @@ ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
           </div>
               <% out.print(dbConnection.getConnection());%>
               <%@include file="layout/footer.jsp"%>
+
+
+
+<footer class="bg-dark text-center text-white">
+   
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+  
+        <!-- Twitter -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-twitter"></i
+        ></a>
+  
+        <!-- Google -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-google"></i
+        ></a>
+  
+        <!-- Instagram -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-instagram"></i
+        ></a>
+  
+        <!-- Linkedin -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+  
+        <!-- Github -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-github"></i
+        ></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+  
+   
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+     Team Epay
+    </div>
+
+  
+  </footer>
+
   </body>
 </html>
