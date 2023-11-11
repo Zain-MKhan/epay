@@ -17,7 +17,7 @@ In addition, for a2 we are using mysql/mysql workbench for handling the backend.
 2. Right-click on it to add deployment, which is the WAR file called theprj.war.
 3. Go to localhost:8080, and select the "theprj" application, which will bring you to the home index.
 4. Have mySQL server and workbench installed and defaulted to localhost port 3306.
-5. Download the latest database dump found at https://drive.google.com/drive/folders/1BsTzX80Za7Qq8WV3Abei-du955B-fsro?usp=sharing and import it through mySQL workbench's 'Navigator' by clicking on 'Data Import/Restore'
+5. Download the latest database dump found in the repository labeled as 'mysqlDump', or alternatively at https://drive.google.com/drive/folders/1BsTzX80Za7Qq8WV3Abei-du955B-fsro?usp=sharing and import it through mySQL workbench's 'Navigator' by clicking on 'Data Import/Restore'
 6. Following step 4, visit src>main>java>connection>dbConnection.java and replace the "dbuser" user name and "dbpass" password with your own username and password for mySQL
 
 For staff users, login credentials have been defaulted to:
