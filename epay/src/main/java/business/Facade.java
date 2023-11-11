@@ -26,28 +26,37 @@ public class Facade {
 
 
 
-    public void updateProduct(int sku, String name, Double price, String description, String vendor, String slug, String image) {
+      public void updateProduct(int sku, String name, Double price, String description, String vendor, String slug, String image) {
+		try{
       Product productToUpdate = (Product) getProductWithSku(sku);
       if (productToUpdate != null) {
           productToUpdate.UpdateProduct(sku, name, price, description, vendor, slug, image);
-      } else {
 
-        //can prob error handle here
-          System.out.println("prd dne ske dne.");
-        }
+		  throw new CustomNullProductExceptions();
+      } }
+	  catch(CustomNullProductExceptions e){
+		System.out.println(e.getMessage());
+	}
       }
 
   
-    public Object getProductWithSku(int sku) {
+      public Object getProductWithSku(int sku) {
 
-      List<Product> products = new  ArrayList<>();
-      for (Product product : products) {
-        if (product.getSku() == sku) {
-          return product.getSku();
+        try{
+          List<Product> products = new  ArrayList<>();
+          for (Product product : products) {
+            if (product.getSku() == sku) {
+              return product.getSku();
+            }
+        else{
+            throw new CustomUnmatchedIDException();
         }
+          }
+      }catch(CustomUnmatchedIDException e){
+        System.out.println(e.getMessage());
       }
-      return null;
-    }
+          return null;
+        }
 
     public Object getProductWithSlug(String slug) {
 
@@ -75,48 +84,73 @@ public class Facade {
       return null;
     }
 
-    public void addProductToCart(int user, int sku) {
+      
+	  public void addProductToCart(int user, int sku) {
+
+      try{
       Product p = (Product) getProductWithSku(sku);
       if (p != null) {
-          Cart userCart = (Cart) getCart(user);
-          userCart.addProduct(p);
-      } else {
-      //can prob error handle here
-
-            System.out.println("prd not added function.");
+        Cart userCart = (Cart) getCart(user);
+        userCart.addProduct(p);
+      } else{
+          throw new CustomNullProductExceptions();
       }
-     }
-
-    public void removeProductFromCart(int user, int sku) {
-    Cart userCart = getCartByUser(user);
-    if (userCart != null) {
-        userCart.removeProduct(sku);
-    }else{
-       //can prob error handle here
-       System.out.println("nothing will be perfomed. for car removval.");
-      }
+    }catch(CustomNullProductExceptions e){
+      System.out.println(e.getMessage());
     }
+       }
+
+
+	  public void removeProductFromCart(int user, int sku) {
+		try{
+	  Cart userCart = getCartByUser(user);
+	  if (userCart != null) {
+		  userCart.removeProduct(sku);
+		
+	  }
+	  else{
+		  throw new CustomNullCartExceptions();
+	  }  	
+	}catch(CustomNullCartExceptions e){
+		System.out.println(e.getMessage());
+	}
+	  }
 
     public void setProductQuantityInCart(int user, int sku, int quantity) {
           Cart userCart = (Cart) getCart(user);
           userCart.setQuantity(quantity);
       }
 
-     public void clearCart(int user) {
+      public void clearCart(int user) {
+        try{
           Cart c = getCartByUser(user);
           if (c != null) {
-              cart.remove(c);
+            cart.remove(c);
+          
           }
+          else{
+              throw new CustomNullCartExceptions();
+          }
+        }catch(CustomNullCartExceptions e){
+        System.out.println(e.getMessage());
       }
+        }
 
     public void createOrder(int user, String shippingAddress) {
         Cart userCart = getCartByUser(user);
+        try{
         if (userCart != null) {
 
           Order order = new Order(user,shippingAddress);
           order.addProduct(userCart);
           clearCart(user);
-        }
+        }else{
+
+           throw new CustomNullCartExceptions();
+        }}catch(CustomNullCartExceptions e){
+        System.out.println(e.getMessage());
+      }
+
     }
 
     public List<Order> getOrders(int user) {
@@ -130,46 +164,45 @@ public class Facade {
     }
 
     public Order getOrder(String user, int orderId) {
-      for (Order order : order) {
-        if (order.getOrderId() == orderId) {
 
-          if(order.getUsername.equals(user)){
-            order.toString();
-            return order;
-          }
-          
-        }else{
-              //can prob error handle here
-       System.out.println("nothing will be perfomed. for car removval.");
-       return null;
+      try{
+    for (Order order : order) {
+      if (order.getOrderId() == orderId) {
+
+        if(order.getUsername.equals(user)){
+          order.toString();
+          return order;
         }
-
+        
+      }else{
+         throw new CustomUnmatchedIDException();
       }
-      return null;
+   }
+
+  }catch(CustomUnmatchedIDException e){
+      System.out.println(e.getMessage());
     }
+    return null; }
 
     public Order ShipOrder(int id, int trackingNumber) {
    
-      for (Order order : order) {
-          if (order.getOrderId() == id) {
-            order.setStatus("Shipped");
-            order.setTrackingNumber(trackingNumber);
-            System.out.println("order id=" +order.getOrderId()+" Status=" + order.getStatus()+ "Tracking number will be: " + order.getTrackingNumber());
-            return order;
-          }
+      try{
+    for (Order order : order) {
+        if (order.getOrderId() == id) {
+          order.setStatus("Shipped");
+          order.setTrackingNumber(trackingNumber);
+          System.out.println("order id=" +order.getOrderId()+" Status=" + order.getStatus()+ "Tracking number will be: " + order.getTrackingNumber());
+          return order;
+        }  else{
+         throw new CustomUnmatchedIDException();
       }
-      System.out.println("it wasnt found sadge");
-      return null;
-     }
-  
-
-
-
-
-
-
-
-
+    }
+ 
+  }catch(CustomUnmatchedIDException e){
+      System.out.println(e.getMessage());
+    }
+    return null;
+   }
 
     
 }

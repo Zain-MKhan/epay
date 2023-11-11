@@ -1,5 +1,4 @@
 @startuml
-
 package business{
 
 
@@ -57,9 +56,17 @@ package business{
 	public String getImage()
 
 	public void setImage(String image)
+	
+	public Product CreateProduct(int sku, String name)
 
+  public void updateProduct(int sku, String name, Double price, String description, String vendor, String slug, String image) 
 
-	public String toString()
+  public Object getProductWithSku(int sku)
+
+  public Object getProductWithSlug(String slug)
+  
+  public String toString()
+  
     
 }
 
@@ -72,6 +79,7 @@ package business{
 	private String shippingAddress;
 	public long userId;
 	private List<Product> allProducts = new ArrayList<>();
+	private List<Cart> cart = new ArrayList<>();
 
 	public Cart()
 	public Cart(long userId)
@@ -92,24 +100,30 @@ package business{
 
   public void removeProduct(int sku) 
   
-  
+  public List<Product> getCart(int user) 
 
+  public Cart getCartByUser(int user)
+    
+  public void addProductToCart(int user, int sku)
+    
+  public void removeProductFromCart(int user, int sku)
+    
+  public void setProductQuantityInCart(int user, int sku, int quantity) 
 
-	
+  public void clearCart(int user) 
 
 
 }
 
 
  class User {
-    private long userId; // Unique identifier for the user
-    private String username; // User's username
-    private String email; // User's email address
-    private String password; // User's password (hash or encrypted)
+    private long userId; 
+    private String username; 
+    private String email; 
+    private String password; 
 
    
     public User()
-    // Constructor
     public User(long userId, String username, String email, String password) 
 
 
@@ -119,6 +133,7 @@ package business{
     public long getUserId() 
 
     public void setUserId(long userId)
+    
     public String getUsername() 
 
     public void setUsername(String username)
@@ -128,11 +143,10 @@ package business{
     public void setEmail(String email)
 
     public String getPassword() 
+    
     public void setPassword(String password)
 
     public boolean authenticate(String inputPassword)
-
-    
    
     public String toString() 
 
@@ -147,9 +161,11 @@ package business{
     public Staff(String userName, String password)
 
     public Staff() 
+    
     public String getUserName() 
 
     public void setUserName(String userName)
+    
     public String getPassword() 
 
     public void setPassword(String password)
@@ -189,6 +205,9 @@ package business{
     private String status;
   
     private List<String> allProducts;
+    
+    private List<Order> order = new ArrayList<>();
+    
     public Object getUsername;
 
     public Order() 
@@ -228,6 +247,15 @@ package business{
     public String getStatus() 
 
     public void setStatus(String status) 
+    
+    public void createOrder(int user, String shippingAddress) 
+
+    public List<Order> getOrders(int user) 
+
+    public Order getOrder(String user, int orderId)
+    
+    public Order ShipOrder(int id, int trackingNumber)
+    
 }
 
 
@@ -277,6 +305,4 @@ package business{
 }
 
 }
-
-
 @enduml

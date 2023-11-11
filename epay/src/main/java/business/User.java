@@ -4,9 +4,9 @@ import java.util.List;
 
 public class User {
     private long userId; // Unique identifier for the user
-    private String username; // User's username
-    private String email; // User's email address
-    private String password; // User's password (hash or encrypted)
+    private String username; 
+    private String email; 
+    private String password; 
 
     // Default constructor
     public User() {
