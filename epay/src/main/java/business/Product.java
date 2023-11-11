@@ -131,6 +131,60 @@ public class Product {
 		this.image = image;
 	}
 
+	public Product CreateProduct(int sku, String name){
+
+		Product p = new Product(sku, name);
+    products.add(p);
+    return p;
+    }
+
+
+
+    public void updateProduct(int sku, String name, Double price, String description, String vendor, String slug, String image) {
+		try{
+      Product productToUpdate = (Product) getProductWithSku(sku);
+      if (productToUpdate != null) {
+          productToUpdate.UpdateProduct(sku, name, price, description, vendor, slug, image);
+
+		  throw new CustomNullProductExceptions();
+      } }
+	  catch(CustomNullProductExceptions e){
+		System.out.println(e.getMessage());
+	}
+      }
+
+  
+    public Object getProductWithSku(int sku) {
+
+		try{
+      List<Product> products = new  ArrayList<>();
+      for (Product product : products) {
+        if (product.getSku() == sku) {
+          return product.getSku();
+        }
+		else{
+			  throw new CustomUnmatchedIDException();
+		}
+      }
+	}catch(CustomUnmatchedIDException e){
+		System.out.println(e.getMessage());
+	}
+      return null;
+    }
+
+    public Object getProductWithSlug(String slug) {
+
+      List<Product> products = new  ArrayList<>();
+      for (Product product : products) {
+        if (product.getSlug().equals(slug)) {
+          return product.getSlug();
+        }
+      }
+      return null;
+    }
+
+
+
 
 
     @Override
