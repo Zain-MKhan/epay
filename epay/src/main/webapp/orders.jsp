@@ -80,5 +80,7 @@ ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
     </div>
 
     <%@include file="layout/footer.jsp"%>
+
+    
   </body>
 </html>

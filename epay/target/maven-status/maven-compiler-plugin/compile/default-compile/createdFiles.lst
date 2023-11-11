@@ -18,6 +18,7 @@ servlets\CustomerLogoutServlet.class
 servlets\cartQuantityIncreaseServlet.class
 business\Staff.class
 servlets\cartServlet.class
+servlets\shippingServlet.class
 business\Cart.class
 servlets\checkOutServlet.class
 dbObjects\OrderObject.class
