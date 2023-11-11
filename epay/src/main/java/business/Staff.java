@@ -1,6 +1,6 @@
 package business;
 
-public class Staff extends User{
+public class Staff extends User {
     private String userName;
     private String password;
 

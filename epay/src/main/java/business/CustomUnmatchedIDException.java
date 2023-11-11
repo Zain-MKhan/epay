@@ -1,14 +1,13 @@
 package business;
 
+public class CustomUnmatchedIDException extends Exception {
 
-public class CustomUnmatchedIDException extends Exception{
-
-
-    public CustomUnmatchedIDException (){
+	public CustomUnmatchedIDException() {
 		super("The elements of the id did not match hence the method will not be occuring.");
 	}
-	public CustomUnmatchedIDException (String message){
+
+	public CustomUnmatchedIDException(String message) {
 		System.out.println(message);
 	}
-    
+
 }

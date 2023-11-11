@@ -1,12 +1,13 @@
 package business;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
     private long userId; // Unique identifier for the user
-    private String username; 
-    private String email; 
-    private String password; 
+    private String username;
+    private String email;
+    private String password;
 
     // Default constructor
     public User() {

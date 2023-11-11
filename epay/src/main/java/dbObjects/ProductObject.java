@@ -152,7 +152,7 @@ public class ProductObject {
         return prdList;
     }
 
-    public double getTotal(ArrayList<Cart> cL){
+    public double getTotal(ArrayList<Cart> cL) {
         double tot = 0;
 
         try {
@@ -163,26 +163,19 @@ public class ProductObject {
                     preparedStatement.setInt(1, item.getSku());
                     resultSet = preparedStatement.executeQuery();
                     while (resultSet.next()) {
-                        tot+=resultSet.getDouble("price")*item.getQuantity();
+                        tot += resultSet.getDouble("price") * item.getQuantity();
                     }
 
                 }
             }
 
-        } catch (SQLException e)
-         {
+        } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
 
-
-
         return tot;
 
-
     }
-
-
-
 
 }
