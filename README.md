@@ -2,12 +2,14 @@
 Assignments for SOEN387 Fall 2023
 
 Zain Khan
+
 Ashiqur Rahman
 
 ## Development Environment and Compilation Instructions
 
 For this specific assignment, we are using Maven in VS Code with the Java extensions, as well as the Community Server extension for Tomcat.
-In addition, for a2 we are using mysql/mysql workbench for handling the backend
+
+In addition, for a2 we are using mysql/mysql workbench for handling the backend.
 
 ### To run the project, you'll need to:
 
