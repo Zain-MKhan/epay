@@ -33,40 +33,40 @@ public class CustomerObject {
         try {
 
             // ******THE FOLLOWING IS IF WE WANT TO CHECK DATABASE AND NOT JSON FILE******
-            // myQuery = "select * from customers where email=? and password=?";
-            // preparedStatement = this.connection.prepareStatement(myQuery);
-            // preparedStatement.setString(1, email);
-            // preparedStatement.setString(2, password);
-            // resultSet = preparedStatement.executeQuery();
+            myQuery = "select * from customers where email=? and password=?";
+            preparedStatement = this.connection.prepareStatement(myQuery);
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, password);
+            resultSet = preparedStatement.executeQuery();
 
-            // if (resultSet.next()) {
-            // customer = new Customer();
-            // customer.setEmail(resultSet.getString("email"));
-            // customer.setPassword(resultSet.getString("password"));
-            // }
+            if (resultSet.next()) {
+                customer = new Customer();
+                customer.setEmail(resultSet.getString("email"));
+                customer.setPassword(resultSet.getString("password"));
+            }
             // ***************************************************************************
 
             // ************THE FOLLOWING IS IF WE WANT TO CHECK THE JSON FILE*************
-            // Read the JSON file into a string
-            String filePath = "CustomerPasswords.json";
-            String json = new String(
-                    Files.readAllBytes(Paths.get(getClass().getClassLoader().getResource(filePath).toURI())));
+            // // Read the JSON file into a string
+            // String filePath = "CustomerPasswords.json";
+            // String json = new String(
+            // Files.readAllBytes(Paths.get(getClass().getClassLoader().getResource(filePath).toURI())));
 
-            JsonElement element = JsonParser.parseString(json);
-            JsonArray jsonArray = element.getAsJsonArray();
+            // JsonElement element = JsonParser.parseString(json);
+            // JsonArray jsonArray = element.getAsJsonArray();
 
-            for (JsonElement user : jsonArray) {
-                JsonObject jsonObject = user.getAsJsonObject();
-                String storedEmail = jsonObject.get("email").getAsString();
-                String storedPassword = jsonObject.get("password").getAsString();
+            // for (JsonElement user : jsonArray) {
+            // JsonObject jsonObject = user.getAsJsonObject();
+            // String storedEmail = jsonObject.get("email").getAsString();
+            // String storedPassword = jsonObject.get("password").getAsString();
 
-                if (email.equals(storedEmail) && password.equals(storedPassword)) {
-                    customer = new Customer();
-                    customer.setEmail(email);
-                    customer.setPassword(password);
-                    break;
-                }
-            }
+            // if (email.equals(storedEmail) && password.equals(storedPassword)) {
+            // customer = new Customer();
+            // customer.setEmail(email);
+            // customer.setPassword(password);
+            // break;
+            // }
+            // }
             // ***************************************************************************
 
         } catch (Exception e) {
