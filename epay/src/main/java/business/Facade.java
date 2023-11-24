@@ -10,6 +10,7 @@ public class Facade {
   private List<User> user = new ArrayList<>();
   private List<Cart> cart = new ArrayList<>();
   private List<Order> order = new ArrayList<>();
+  private List<String> Passwords = new ArrayList<>();
 
   public Facade() {
 
@@ -196,5 +197,56 @@ public class Facade {
     }
     return null;
   }
+
+
+  public void SetOrderOwner(int orderId, int userId) {
+
+        try {
+          //will change this later to properly handle
+          Order order = new Order();
+          User user = new User();
+          order.setOrderId(orderId);
+          user.setUserId(userId);
+          
+        throw new CustomUnmatchedIDException();
+        }catch (CustomUnmatchedIDException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  public void SetPasscode(int user, String pass) {
+
+    //change exception later...
+    try{
+    if (!Passwords.contains(pass)) {
+        Passwords.add(pass);
+        System.out.println("The password has been set/changed for the user:" + user);
+    } else {
+        throw new CustomUnmatchedIDException();
+    }
+  }catch (CustomUnmatchedIDException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  public void ChangePermission(User user, String permission) {
+    //change expcetion later...
+    try{
+         
+    if (user.getPermission().equals("customer")|| user.getPermission().equals("staff")|| user.getPermission().equals("")) {
+      user.setPermission(permission);
+        System.out.println("The permission of the following user:" + user + " has now been changed and they are assingned " + permission);
+    } else {
+            throw new CustomUnmatchedIDException();
+    }
+
+  }catch (CustomUnmatchedIDException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+
+
+  
 
 }

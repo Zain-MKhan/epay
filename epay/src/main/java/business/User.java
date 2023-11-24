@@ -8,6 +8,7 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private String permission;
 
     // Default constructor
     public User() {
@@ -15,6 +16,7 @@ public class User {
         this.username = "defaultUsername";
         this.email = "defaultEmail";
         this.password = "defaultPassword";
+        this.permission = "defaultrole";
     }
 
     // Constructor
@@ -23,6 +25,15 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+      public User(long userId,String permission, String username, String email, String password) {
+        this.userId = userId;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.permission=permission;
+        
     }
 
     // Copy constructor
@@ -34,6 +45,13 @@ public class User {
     }
 
     // Getters and setters for attributes
+    public String getPermission() {
+        return permission;
+    }
+
+    public void setPermission(String permission) {
+        this.permission = permission;
+    }
     public long getUserId() {
         return userId;
     }
