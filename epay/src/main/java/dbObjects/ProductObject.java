@@ -9,6 +9,7 @@ import java.util.List;
 
 import business.Cart;
 import business.Product;
+import connection.dbConnection;
 
 public class ProductObject {
     private Connection connection;
@@ -25,8 +26,7 @@ public class ProductObject {
         List<Product> prdList = new ArrayList<>();
 
         try {
-
-            myQuery = "select * from products";
+            myQuery = "SELECT * FROM products";
             preparedStatement = this.connection.prepareStatement(myQuery);
             resultSet = preparedStatement.executeQuery();
 
@@ -36,7 +36,7 @@ public class ProductObject {
                 row.setName(resultSet.getString("name"));
                 row.setPrice(resultSet.getDouble("price"));
                 row.setDescription(resultSet.getString("description"));
-                row.setVendor(resultSet.getNString("vendor"));
+                row.setVendor(resultSet.getString("vendor"));
                 row.setSlug(resultSet.getString("slug"));
                 row.setImage(resultSet.getString("image"));
                 prdList.add(row);
@@ -48,7 +48,6 @@ public class ProductObject {
         }
 
         return prdList;
-
     }
 
     public Product getProductBySlug(String slug) {
@@ -81,6 +80,8 @@ public class ProductObject {
 
     public boolean insertProduct(Product product) {
         try {
+            dbConnection.beginTransaction(); // Begin transaction
+
             myQuery = "INSERT INTO products (sku, name, price, description, vendor, slug, image) VALUES (?, ?, ?, ?, ?, ?, ?)";
             preparedStatement = connection.prepareStatement(myQuery);
             preparedStatement.setInt(1, product.getSku());
@@ -92,6 +93,9 @@ public class ProductObject {
             preparedStatement.setString(7, product.getImage());
 
             int rowsInserted = preparedStatement.executeUpdate();
+
+            dbConnection.commitTransaction(); // Commit transaction
+
             return rowsInserted > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -102,6 +106,8 @@ public class ProductObject {
 
     public boolean updateProduct(Product product) {
         try {
+            dbConnection.beginTransaction(); // Begin transaction
+
             myQuery = "UPDATE products SET name = ?, price = ?, description = ?, vendor = ?, image = ? WHERE slug = ?";
             preparedStatement = connection.prepareStatement(myQuery);
             preparedStatement.setString(1, product.getName());
@@ -112,6 +118,9 @@ public class ProductObject {
             preparedStatement.setString(6, product.getSlug());
 
             int rowsUpdated = preparedStatement.executeUpdate();
+
+            dbConnection.commitTransaction(); // Commit transaction
+
             return rowsUpdated > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -125,7 +134,7 @@ public class ProductObject {
         try {
             if (cL.size() > 0) {
                 for (Cart item : cL) {
-                    myQuery = "select * from products where slug=?";
+                    myQuery = "SELECT * FROM products WHERE slug=?";
                     preparedStatement = this.connection.prepareStatement(myQuery);
                     preparedStatement.setString(1, item.getSlug());
                     resultSet = preparedStatement.executeQuery();
@@ -136,14 +145,12 @@ public class ProductObject {
                         row.setPrice(resultSet.getDouble("price") * item.getQuantity());
                         row.setQuantity(item.getQuantity());
                         row.setDescription(resultSet.getString("description"));
-                        row.setVendor(resultSet.getNString("vendor"));
+                        row.setVendor(resultSet.getString("vendor"));
                         row.setSlug(resultSet.getString("slug"));
                         prdList.add(row);
                     }
-
                 }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
@@ -158,24 +165,20 @@ public class ProductObject {
         try {
             if (cL.size() > 0) {
                 for (Cart item : cL) {
-                    myQuery = "select price from products where sku=?";
+                    myQuery = "SELECT price FROM products WHERE sku=?";
                     preparedStatement = this.connection.prepareStatement(myQuery);
                     preparedStatement.setInt(1, item.getSku());
                     resultSet = preparedStatement.executeQuery();
                     while (resultSet.next()) {
                         tot += resultSet.getDouble("price") * item.getQuantity();
                     }
-
                 }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
 
         return tot;
-
     }
-
 }

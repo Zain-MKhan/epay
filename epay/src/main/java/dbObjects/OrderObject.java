@@ -30,7 +30,7 @@ public class OrderObject {
             preparedStatement.setInt(3, myOrder.getQuantity());
             preparedStatement.setString(4, myOrder.getShippingAddress());
             preparedStatement.setString(5, myOrder.getDate());
-            preparedStatement.setInt(6, myOrder.getOrderId());
+            // preparedStatement.setInt(6, myOrder.getOrderId());
             preparedStatement.setInt(7, myOrder.getTrackingNumber());
             preparedStatement.executeUpdate();
             result = true;
