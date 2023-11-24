@@ -15,7 +15,7 @@ public class dbConnection {
             // *** CHANGE TO YOUR OWN ABSOLUTE PATH: ***
             // due to read/write issues,
             // copy 'epay.db' (soen387\epay.db) to your machine and include that path below:
-            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\zain0\\OneDrive\\Desktop\\epay.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Ashiqur\\Desktop\\epay\\epay\\soen387\\epay.db");
 
             System.out.println("Successfully connected to SQLite database!");
         }
