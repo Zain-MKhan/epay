@@ -20,6 +20,12 @@ public class User {
     }
 
     // Constructor
+
+     public User(String email, String password,String permission) {
+        this.email = email;
+        this.password = password;
+        this.permission=permission;
+    }
     public User(long userId, String username, String email, String password) {
         this.userId = userId;
         this.username = username;
