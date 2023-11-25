@@ -15,7 +15,12 @@ public class RegisterObject {
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
+       public RegisterObject(){
+
+    }
+
     public RegisterObject(Connection connection) {
+        super();
         this.connection = connection;
     }
 
