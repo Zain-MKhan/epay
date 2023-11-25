@@ -41,14 +41,19 @@
   <body>
     <%@include file="layout/navbar.jsp"%>
     <div class="container">
-        <div class=" d-flex py-3"><h3>Welcome to the Cart Page</h3></div>
+        <div class="d-flex py-3 justify-content-between">
+          <h3>Welcome to the Cart Page</h3>
+          <% if (authorizedCustomer == null && authorizedStaff == null){ %>
+            <h3>GUEST CHECKOUT</h3>
+          <%}%>
+        </div>
         <div class="card">
           <div class="card-body d-flex justify-content-between">
             <div>
               <h3 class="card-title">Total Price: </h3>
               <h3 class="card-text"><%=request.getAttribute("total")%></h3>
             </div>
-              <%if(authorizedCustomer != null && cl!=null && cl.size()>=1){ %>
+              <%if((authorizedCustomer != null || authorizedStaff == null) && cl!=null && cl.size()>=1){ %>
                 <form action="shippingAddress" method="get">
                   <div>
                       <input type="text" id="address" name="address" placeholder="Enter shipping address" />
@@ -57,11 +62,9 @@
               </form>              
               <button class="mx-3 btn btn-primary" id="orderButton" disabled>Order</button>
               <%}else if(cl!=null){
-                if(authorizedCustomer != null && (cl!=null || cl.size()<1)){%>
+                if((authorizedCustomer != null || authorizedStaff == null) && (cl!=null || cl.size()<1)){%>
                   <h3 class="card-text">Add items to cart to place order</h3>
-              <%}else {%>
-                <h3 class="card-text">Login to place order!</h3>
-              <%}
+                <%}
               }%>
           </div>
       </div>

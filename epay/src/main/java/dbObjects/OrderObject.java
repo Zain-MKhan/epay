@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import business.*;
+import connection.dbConnection;
 
 public class OrderObject {
     private Connection connection;
@@ -22,6 +23,8 @@ public class OrderObject {
     public boolean insertOrder(Order myOrder) {
         boolean result = false;
         try {
+            dbConnection.beginTransaction(); // Begin transaction
+
             // orderid will increment on its own as our database is designed this way
             myQuery = "insert into orders (productsku, email, quantity, shippingAddress, date, orderid, trackingNumber) values(?,?,?,?,?,?,?)";
             preparedStatement = this.connection.prepareStatement(myQuery);
@@ -34,6 +37,8 @@ public class OrderObject {
             preparedStatement.setInt(7, myOrder.getTrackingNumber());
             preparedStatement.executeUpdate();
             result = true;
+
+            dbConnection.commitTransaction(); // Commit transaction
         } catch (Exception e) {
             e.printStackTrace();
         }

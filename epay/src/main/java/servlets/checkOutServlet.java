@@ -29,11 +29,15 @@ public class checkOutServlet extends jakarta.servlet.http.HttpServlet {
 
             Customer authorizedCustomer = (Customer) request.getSession().getAttribute("authorizedCustomer");
 
-            if (cl != null && authorizedCustomer != null) {
+            if (cl != null) {
                 for (Cart c : cl) {
                     Order order = new Order();
                     order.setSku(c.getSku());
-                    order.setEmail(authorizedCustomer.getEmail());
+                    if (authorizedCustomer != null) {
+                        order.setEmail(authorizedCustomer.getEmail());
+                    } else {
+                        order.setEmail("Guest");
+                    }
                     order.setQuantity(c.getQuantity());
                     order.setDate(dateFormatter.format(date));
                     order.setShippingAddress(c.getShippingAddress());
@@ -48,8 +52,6 @@ public class checkOutServlet extends jakarta.servlet.http.HttpServlet {
                 }
                 cl.clear();
                 response.sendRedirect("orders.jsp");
-            } else if (authorizedCustomer == null) {
-                response.sendRedirect("customerLogin.jsp");
             } else {
                 response.sendRedirect("cart.jsp");
             }

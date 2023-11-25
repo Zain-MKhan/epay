@@ -26,6 +26,8 @@ public class ProductObject {
         List<Product> prdList = new ArrayList<>();
 
         try {
+            dbConnection.beginTransaction(); // Begin transaction
+
             myQuery = "SELECT * FROM products";
             preparedStatement = this.connection.prepareStatement(myQuery);
             resultSet = preparedStatement.executeQuery();
@@ -42,6 +44,7 @@ public class ProductObject {
                 prdList.add(row);
             }
 
+            dbConnection.commitTransaction(); // Commit transaction
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
@@ -54,6 +57,8 @@ public class ProductObject {
         Product product = null;
 
         try {
+            dbConnection.beginTransaction(); // Begin transaction
+
             myQuery = "SELECT * FROM products WHERE slug=?";
             preparedStatement = connection.prepareStatement(myQuery);
             preparedStatement.setString(1, slug);
@@ -70,6 +75,7 @@ public class ProductObject {
                 product.setImage(resultSet.getString("image"));
             }
 
+            dbConnection.commitTransaction(); // Commit transaction
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
@@ -132,6 +138,8 @@ public class ProductObject {
     public List<Cart> getCartProducts(ArrayList<Cart> cL) {
         List<Cart> prdList = new ArrayList<>();
         try {
+            dbConnection.beginTransaction(); // Begin transaction
+
             if (cL.size() > 0) {
                 for (Cart item : cL) {
                     myQuery = "SELECT * FROM products WHERE slug=?";
@@ -151,6 +159,8 @@ public class ProductObject {
                     }
                 }
             }
+
+            dbConnection.commitTransaction(); // Commit transaction
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
@@ -163,6 +173,8 @@ public class ProductObject {
         double tot = 0;
 
         try {
+            dbConnection.beginTransaction(); // Begin transaction
+
             if (cL.size() > 0) {
                 for (Cart item : cL) {
                     myQuery = "SELECT price FROM products WHERE sku=?";
@@ -174,6 +186,8 @@ public class ProductObject {
                     }
                 }
             }
+
+            dbConnection.commitTransaction(); // Commit transaction
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
