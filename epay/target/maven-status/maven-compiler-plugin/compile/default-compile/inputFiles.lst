@@ -4,6 +4,7 @@ C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\servlets\CustomerLoginServlet.j
 C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\servlets\CustomerLogoutServlet.java
 C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\business\User.java
 C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\business\Cart.java
+C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\dbObjects\RegisterObject.java
 C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\business\CustomNullOrderExceptions.java
 C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\business\CustomNullCartExceptions.java
 C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\business\Facade.java
@@ -21,6 +22,7 @@ C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\servlets\productsSlugServlet.ja
 C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\servlets\cartServlet.java
 C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\dbObjects\ProductObject.java
 C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\connection\dbConnection.java
+C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\servlets\registerServlet.java
 C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\servlets\StaffLoginServlet.java
 C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\servlets\StaffLogoutServlet.java
 C:\Users\Ashiqur\Desktop\epay\epay\src\main\java\business\Customer.java
