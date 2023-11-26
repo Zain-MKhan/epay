@@ -17,6 +17,10 @@
         customerOrders = new OrderObject(dbConnection.getConnection()).allOrders();
     } 
 
+    if (authorizedCustomer == null && authorizedStaff == null){
+      customerOrders = new OrderObject(dbConnection.getConnection()).userOrders("Guest");
+    } 
+
 ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
   if (somelist != null) {
       request.setAttribute("somelist", somelist);
