@@ -98,6 +98,45 @@ public class OrderObject {
         return orderList;
     }
 
+    public void claimOrder(int orderid, String email) {
+        try {
+            dbConnection.beginTransaction(); // Begin transaction
+
+            // Retrieve order information
+            myQuery = "SELECT * FROM orders WHERE orderid=?";
+            preparedStatement = this.connection.prepareStatement(myQuery);
+            preparedStatement.setInt(1, orderid);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String userEmail = resultSet.getString("email");
+
+                // Check if the user is "Guest"
+                if ("Guest".equals(userEmail)) {
+                    // Replace "Guest" with the custom email provided
+                    updateOrderUser(orderid, email);
+                }
+            }
+
+            dbConnection.commitTransaction(); // Commit transaction
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Helper method to update order user
+    private void updateOrderUser(int orderid, String userEmail) {
+        try {
+            myQuery = "UPDATE orders SET email = ? WHERE orderid = ?";
+            preparedStatement = this.connection.prepareStatement(myQuery);
+            preparedStatement.setString(1, userEmail);
+            preparedStatement.setInt(2, orderid);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     // for staff members
     public boolean updateTrackingNumber(int orderId, int trackingNumber) {
         boolean result = false;
