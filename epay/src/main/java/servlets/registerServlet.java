@@ -2,7 +2,8 @@ package servlets;
 
 import java.io.IOException;
 
-import business.User;
+import business.Customer;
+import connection.dbConnection;
 import dbObjects.RegisterObject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,36 +12,29 @@ import jakarta.servlet.annotation.WebServlet;
 @WebServlet("/register")
 public class registerServlet extends jakarta.servlet.http.HttpServlet {
 
-    private RegisterObject userobj;
-	
-        public void init() {
-            userobj = new RegisterObject();
-        }
-
 	protected void doPost(jakarta.servlet.http.HttpServletRequest request,jakarta.servlet.http.HttpServletResponse response) throws IOException, ServletException {
 
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String permission = request.getParameter("type");
 
-        User user = new User();
+    
+        try {
+
+		RegisterObject robj = new RegisterObject(dbConnection.getConnection());
+
+		Customer user = new Customer();
 		user.setEmail(email);
 		user.setPassword(password);
-		user.setPermission(permission);
+		robj.setCode(user);
 
-
-        try {
-			userobj.setCode(user);
+		System.out.println("Successfully created password!");
+		
 		} catch (Exception e) {
 		
 			e.printStackTrace();
 		}
-		
 	
-        response.sendRedirect("register.jsp");
+        response.sendRedirect("customerLogin.jsp");
 	}
-	
-
-
 }

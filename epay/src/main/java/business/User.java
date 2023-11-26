@@ -14,12 +14,16 @@ public class User {
     public User() {
         this.userId = 0;
         this.username = "defaultUsername";
-        this.email = "defaultEmail";
-        this.password = "defaultPassword";
+        this.email = "email";
+        this.password = "password";
         this.permission = "defaultrole";
     }
 
     // Constructor
+       public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
      public User(String email, String password,String permission) {
         this.email = email;

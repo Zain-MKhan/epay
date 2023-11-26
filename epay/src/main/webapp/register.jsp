@@ -30,18 +30,18 @@
 		<div class="card w-50 mx-auto my-5">
 			<div class="card-header text-center">Register passcode</div>
 			<div class="card-body">
-				<form action="" method="">
+				<form action="register" method="post">
                     <div class="form-group">
 						<label>Enter User type (Customer or Staff)</label> 
-						<input type="role" name="register-type" class="form-control" placeholder="UserType" value="type" required>
+						<input type="text" name="register-type" class="form-control" placeholder="UserType" value="type" required>
 					</div>
 					<div class="form-group">
 						<label>Email address</label> 
-						<input type="email" name="register-email" class="form-control" placeholder="Email" value="user@gmail.com" required>
+						<input type="text" id = "email" name="email" class="form-control" placeholder="Email" value="user@gmail.com" required>
 					</div>
 					<div class="form-group">
 						<label>Password</label> 
-						<input type="password" name="register-password" class="form-control" placeholder="Password" value="secret" required>
+						<input type="text" id = "password" name="password" class="form-control" placeholder="Password" value="secret" required>
 					</div>
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">Register</button>
