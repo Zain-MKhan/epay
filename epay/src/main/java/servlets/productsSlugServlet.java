@@ -25,7 +25,6 @@ public class productsSlugServlet extends jakarta.servlet.http.HttpServlet {
                 request.getSession().setAttribute("slug", slug);
             }
         }
-
         // Redirect to "product.jsp"
         response.sendRedirect(request.getContextPath() + "/product.jsp");
     }

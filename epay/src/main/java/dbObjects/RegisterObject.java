@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import business.User;
+import connection.dbConnection;
 import business.CustomUnmatchedIDException;
+import business.Customer;
 
 public class RegisterObject {
 
@@ -15,37 +17,28 @@ public class RegisterObject {
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
-       public RegisterObject(){
-
-    }
 
     public RegisterObject(Connection connection) {
         super();
         this.connection = connection;
     }
 
-
-    public boolean setCode(User user) throws SQLException {
+    public boolean setCode(Customer user) throws SQLException {
            boolean result = false;
-  
-
     try{
-            myQuery = "INSERT INTO user" +"  (email, password, usertype) VALUES " +" (?,?,?);";
-            preparedStatement = this.connection.prepareStatement(myQuery);
-            preparedStatement.setInt(1, 1); //should we keep id or no
-            preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, user.getPassword());
-            preparedStatement.setString(4, user.getPermission());
-            System.out.println(preparedStatement);
-            resultSet = preparedStatement.executeQuery();
 
-        //change later the exception
-         throw new CustomUnmatchedIDException();
-    
-    }    catch (CustomUnmatchedIDException e) {
-        System.out.println(e.getMessage());
-
-      }
-      return result;
-}
+            dbConnection.beginTransaction(); 
+            myQuery = "INSERT INTO customers (email, password) VALUES (?, ?);";
+            preparedStatement = connection.prepareStatement(myQuery);
+            preparedStatement.setString(1, user.getEmail());
+            preparedStatement.setString(2, user.getPassword());
+            int rowsInserted = preparedStatement.executeUpdate();
+            dbConnection.commitTransaction(); // Commit transaction
+            return rowsInserted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
