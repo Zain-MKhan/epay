@@ -21,6 +21,9 @@
             <li class="nav-item">
               <a class="nav-link" href="changePasscode.jsp">changePasscode</a>
             </li>
+            <li>
+              <a class="nav-link" href="claimOrder.jsp">Claim Order</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="customer-logout">Logout</a>
             </li>
