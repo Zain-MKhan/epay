@@ -2,6 +2,7 @@ business\Order.class
 dbObjects\CustomerObject.class
 business\CustomNullCartExceptions.class
 business\Driver.class
+servlets\registerServlet.class
 servlets\productsServlet.class
 business\CustomNullProductExceptions.class
 servlets\CustomerLoginServlet.class
@@ -11,6 +12,7 @@ business\Facade.class
 connection\dbConnection.class
 business\CustomNullOrderExceptions.class
 business\Customer.class
+dbObjects\RegisterObject.class
 dbObjects\ProductObject.class
 servlets\StaffLogoutServlet.class
 business\User.class
