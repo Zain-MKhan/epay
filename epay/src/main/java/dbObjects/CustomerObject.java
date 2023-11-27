@@ -3,9 +3,12 @@ package dbObjects;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import business.Customer;
+import connection.dbConnection;
 
 import java.io.FileReader;
 //The following imports are for json customer authentication:
@@ -93,6 +96,78 @@ public class CustomerObject {
             e.printStackTrace();
         }
         return customer;
+    }
+
+    public String getPassword(String email) {
+        String password = null;
+        try {
+            myQuery = "SELECT password FROM customers WHERE email=?";
+            preparedStatement = this.connection.prepareStatement(myQuery);
+            preparedStatement.setString(1, email);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                password = resultSet.getString("password");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return password;
+    }
+
+    public void grantStaffPrivileges(String email) {
+        try {
+            dbConnection.beginTransaction();
+
+            myQuery = "UPDATE customers SET isStaff = ? WHERE email = ?";
+            preparedStatement = this.connection.prepareStatement(myQuery);
+            preparedStatement.setString(1, "true");
+            preparedStatement.setString(2, email);
+            preparedStatement.executeUpdate();
+
+            dbConnection.commitTransaction();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void revokeStaffPrivileges(String email) {
+        try {
+            dbConnection.beginTransaction();
+
+            myQuery = "UPDATE customers SET isStaff = ? WHERE email = ?";
+            preparedStatement = this.connection.prepareStatement(myQuery);
+            preparedStatement.setString(1, "false");
+            preparedStatement.setString(2, email);
+            preparedStatement.executeUpdate();
+
+            dbConnection.commitTransaction();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Customer> allCustomers() {
+        List<Customer> customerList = new ArrayList<>();
+
+        try {
+            myQuery = "select * from customers";
+            preparedStatement = this.connection.prepareStatement(myQuery);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Customer customer = new Customer();
+                customer.setEmail(resultSet.getString("email"));
+                customer.setPassword(resultSet.getString("password"));
+                customer.setIsStaff(resultSet.getString("isStaff"));
+
+                customerList.add(customer);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return customerList;
     }
 
 }

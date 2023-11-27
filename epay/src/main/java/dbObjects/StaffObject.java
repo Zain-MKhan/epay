@@ -54,4 +54,36 @@ public class StaffObject {
         }
         return staff;
     }
+
+    public boolean createMember(String userName, String password) {
+        try {
+            myQuery = "INSERT INTO staff (userName, password) VALUES (?, ?)";
+            preparedStatement = this.connection.prepareStatement(myQuery);
+            preparedStatement.setString(1, userName);
+            preparedStatement.setString(2, password);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            return rowsAffected == 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean removeStaffMember(String userName) {
+        try {
+            myQuery = "DELETE FROM staff WHERE userName=?";
+            preparedStatement = this.connection.prepareStatement(myQuery);
+            preparedStatement.setString(1, userName);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // If the query was successful and one row was affected, return true
+            return rowsAffected == 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

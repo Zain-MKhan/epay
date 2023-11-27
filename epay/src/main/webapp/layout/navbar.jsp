@@ -38,7 +38,10 @@
               <a class="nav-link" href="downloadCatalog.jsp">Download product catalog</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="changePasscode.jsp">changePasscode</a>
+              <a class="nav-link" href="changePasscode.jsp">Change Password</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="manageStaffPrivileges.jsp">Manage Staff Privileges</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="staff-logout">Staff Logout</a>

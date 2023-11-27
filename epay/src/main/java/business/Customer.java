@@ -3,10 +3,17 @@ package business;
 public class Customer extends User {
     private String email;
     private String password;
+    private String isStaff;
 
     public Customer(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public Customer(String email, String password, String isStaff) {
+        this.email = email;
+        this.password = password;
+        this.isStaff = isStaff;
     }
 
     public Customer() {
@@ -26,6 +33,14 @@ public class Customer extends User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getIsStaff() {
+        return isStaff;
+    }
+
+    public void setIsStaff(String isStaff) {
+        this.isStaff = isStaff;
     }
 
     @Override
