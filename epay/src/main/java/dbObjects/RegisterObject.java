@@ -4,11 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import business.User;
 import connection.dbConnection;
-import business.CustomUnmatchedIDException;
 import business.Customer;
+
 
 public class RegisterObject {
 
@@ -41,4 +39,27 @@ public class RegisterObject {
             return false;
         }
     }
+
+
+        public boolean updateCode(Customer user) {
+        try {
+            dbConnection.beginTransaction(); // Begin transaction
+
+            myQuery = "UPDATE customers SET password = ?";
+            preparedStatement = connection.prepareStatement(myQuery);
+            preparedStatement.setString(1, user.getPassword());
+    
+            int rowsUpdated = preparedStatement.executeUpdate();
+
+            dbConnection.commitTransaction(); // Commit transaction
+
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+
 }
