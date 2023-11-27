@@ -63,10 +63,10 @@ ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
                       <td>
                         <%= o.getEmail() %>
                         <%if (authorizedStaff != null){ %>
-                          <form action="" method="post">
+                          <form action="setOrderEmail" method="post">
                             <div>
                               <input type="text" id="email" name="email" placeholder="Enter new order owner">
-                              <input type="hidden" name="orderId" value="<%= o.getOrderId() %>">
+                              <input type="hidden" name="orderid" value="<%= o.getOrderId() %>">
                             </div>
                             <button type="submit" class="mx-3 btn btn-primary"  id="shipButton%>">Change owner</button>
                           </form>
@@ -96,6 +96,5 @@ ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
 
     <%@include file="layout/footer.jsp"%>
 
-    
   </body>
 </html>

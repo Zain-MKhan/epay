@@ -124,14 +124,42 @@ public class OrderObject {
         }
     }
 
-    // Helper method to update order user
-    private void updateOrderUser(int orderid, String userEmail) {
+    // for staff members
+    public void setOrderOwner(int orderid, String email) {
         try {
+            dbConnection.beginTransaction();
+
+            myQuery = "SELECT * FROM customers WHERE email=?";
+            preparedStatement = this.connection.prepareStatement(myQuery);
+            preparedStatement.setString(1, email);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String userEmail = resultSet.getString("email");
+
+                if (email.equals(userEmail)) {
+                    updateOrderUser(orderid, email);
+                }
+            }
+
+            dbConnection.commitTransaction();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Helper method for claimOrder and setOrderOwner
+    private void updateOrderUser(int orderid, String email) {
+        try {
+            dbConnection.beginTransaction();
+
             myQuery = "UPDATE orders SET email = ? WHERE orderid = ?";
             preparedStatement = this.connection.prepareStatement(myQuery);
-            preparedStatement.setString(1, userEmail);
+            preparedStatement.setString(1, email);
             preparedStatement.setInt(2, orderid);
             preparedStatement.executeUpdate();
+
+            dbConnection.commitTransaction();
         } catch (SQLException e) {
             e.printStackTrace();
         }
