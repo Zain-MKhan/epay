@@ -27,7 +27,9 @@ public class StaffLoginServlet extends HttpServlet {
 
             try {
                 StaffObject staffDBObject = new StaffObject(dbConnection.getConnection());
-                Staff staff = staffDBObject.staffLogin(userName, password);
+                // for login with username
+                // Staff staff = staffDBObject.staffLogin(userName, password);
+                Staff staff = staffDBObject.staffLogin(password);
                 if (staff != null) {
                     request.getSession().setAttribute("authorizedStaff", staff);
                     response.sendRedirect("index.jsp");

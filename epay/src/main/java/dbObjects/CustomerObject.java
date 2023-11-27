@@ -85,6 +85,7 @@ public class CustomerObject {
 
             if (resultSet.next()) {
                 customer = new Customer();
+                customer.setEmail(resultSet.getString("email"));
                 customer.setPassword(resultSet.getString("password"));
             }
 
