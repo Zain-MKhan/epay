@@ -60,7 +60,18 @@ ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
                       <td><%= o.getQuantity() %></td>
                       <td><%= o.getShippingAddress() %></td>
                       <td><%= o.getDate() %></td>
-                      <td><%= o.getEmail() %></td>
+                      <td>
+                        <%= o.getEmail() %>
+                        <%if (authorizedStaff != null){ %>
+                          <form action="" method="post">
+                            <div>
+                              <input type="text" id="email" name="email" placeholder="Enter new order owner">
+                              <input type="hidden" name="orderId" value="<%= o.getOrderId() %>">
+                            </div>
+                            <button type="submit" class="mx-3 btn btn-primary"  id="shipButton%>">Change owner</button>
+                          </form>
+                        <%}%>
+                      </td>
                       <td><%= o.getTrackingNumber() %>
                         <%if(o.getTrackingNumber() != 0){ %>
                           <h5>Shipped!</h5>
@@ -70,7 +81,7 @@ ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
                             <div>
                                 <input type="text" id="trackingNumber%>" name="trackingNumber" placeholder="Enter Tracking Number" />
                                 <input type="hidden" name="orderId" value="<%= o.getOrderId() %>">
-                              </div>
+                            </div>
                             <button type="submit" class="mx-3 btn btn-primary" id="shipButton%>">Ship Order</button>
                           </form>
                         <%}%>
