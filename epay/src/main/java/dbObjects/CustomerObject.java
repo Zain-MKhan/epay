@@ -74,4 +74,24 @@ public class CustomerObject {
         }
         return customer;
     }
+
+    public Customer customerLogin(String password) {
+        Customer customer = null;
+        try {
+            myQuery = "select * from customers where password=?";
+            preparedStatement = this.connection.prepareStatement(myQuery);
+            preparedStatement.setString(1, password);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                customer = new Customer();
+                customer.setPassword(resultSet.getString("password"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return customer;
+    }
+
 }

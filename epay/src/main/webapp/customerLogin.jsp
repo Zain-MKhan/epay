@@ -29,10 +29,12 @@ ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
 			<div class="card-header text-center">Customer Login</div>
 			<div class="card-body">
 				<form action="customer-login" method="post">
-					<div class="form-group">
+					<!-- For login with email -->
+					<!-- <div class="form-group">
 						<label>Email address</label> 
 						<input type="email" name="login-email" class="form-control" placeholder="Email" value="user@gmail.com" required>
-					</div>
+					</div> -->
+					
 					<div class="form-group">
 						<label>Password</label> 
 						<input type="password" name="login-password" class="form-control" placeholder="Password" value="secret" required>
