@@ -31,10 +31,6 @@
 			<div class="card-header text-center">Register passcode</div>
 			<div class="card-body">
 				<form action="register" method="post">
-                    <div class="form-group">
-						<label>Enter User type (Customer or Staff)</label> 
-						<input type="text" name="register-type" class="form-control" placeholder="UserType" value="type" required>
-					</div>
 					<div class="form-group">
 						<label>Email address</label> 
 						<input type="text" id = "email" name="email" class="form-control" placeholder="Email" value="user@gmail.com" required>

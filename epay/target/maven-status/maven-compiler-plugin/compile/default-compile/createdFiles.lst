@@ -17,11 +17,13 @@ dbObjects\ProductObject.class
 servlets\StaffLogoutServlet.class
 business\User.class
 servlets\CustomerLogoutServlet.class
+servlets\changePasscodeServlet.class
 servlets\cartQuantityIncreaseServlet.class
 business\Staff.class
 servlets\cartServlet.class
 servlets\shippingServlet.class
 business\Cart.class
+servlets\claimOrderServlet.class
 servlets\checkOutServlet.class
 dbObjects\OrderObject.class
 servlets\cartQuantityDecreaseServlet.class
