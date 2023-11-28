@@ -45,9 +45,11 @@ public class RegisterObject {
         try {
             dbConnection.beginTransaction(); // Begin transaction
 
-            myQuery = "UPDATE customers SET password = ?";
+            myQuery = "UPDATE customers SET password = ? WHERE email = ?";
             preparedStatement = connection.prepareStatement(myQuery);
             preparedStatement.setString(1, user.getPassword());
+            preparedStatement.setString(2, user.getEmail());
+           
     
             int rowsUpdated = preparedStatement.executeUpdate();
 
