@@ -11,6 +11,12 @@ For this specific assignment, we are using Maven in VS Code with the Java extens
 
 In addition, for a3 we are using SQLite for handling the backend.
 
+### To run the tests, you'll need to:
+run the following command:
+- mvn clean install
+The test results will be outputted automatically in the Terminal.
+The written unit tests may be found in src/test/java
+
 ### To run the project, you'll need to:
 
 1. Add Tomcat as a server and start it from the "Servers" tab in VS Code on the left side.
