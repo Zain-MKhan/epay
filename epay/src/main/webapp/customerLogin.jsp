@@ -37,7 +37,7 @@ ArrayList<Cart> somelist = (ArrayList<Cart>) session.getAttribute("somelist");
 					
 					<div class="form-group">
 						<label>Password</label> 
-						<input type="password" name="login-password" class="form-control" placeholder="Password" value="secret" required>
+						<input type="password" name="login-password" class="form-control" placeholder="Password" value="user" required>
 					</div>
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">Login</button>
