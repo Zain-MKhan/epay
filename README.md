@@ -36,7 +36,7 @@ For staff users, login credentials have been defaulted to:
 
 For customers, a test login credential:
 - Username: user@gmail.com
-- Password: secret
+- Password: user
 
 If recurring errors occur, please run the following command to clean and install the project:
 ```bash
