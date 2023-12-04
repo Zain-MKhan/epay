@@ -21,7 +21,7 @@ public class claimOrderServletTest {
         HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
 
         Mockito.when(request.getParameter("orderid")).thenReturn("123");
-        Mockito.when(request.getParameter("email")).thenReturn("test@example.com");
+        Mockito.when(request.getParameter("email")).thenReturn("testEmail@gmail.com");
 
         StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);

@@ -1,10 +1,6 @@
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.*;
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletConfig;
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import servlets.setOrderOwnerServlet;
@@ -21,7 +17,7 @@ public class setOrderOwnerServletTest {
         HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
 
         Mockito.when(request.getParameter("orderid")).thenReturn("123");
-        Mockito.when(request.getParameter("email")).thenReturn("test@example.com");
+        Mockito.when(request.getParameter("email")).thenReturn("testEmail@gmail.com");
 
         StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
