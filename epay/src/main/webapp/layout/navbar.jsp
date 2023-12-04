@@ -19,7 +19,7 @@
               <a class="nav-link" href="orders.jsp">Orders</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="changePasscode.jsp">changePasscode</a>
+              <a class="nav-link" href="changePasscode.jsp">Change Passcode</a>
             </li>
             <li>
               <a class="nav-link" href="claimOrder.jsp">Claim Order</a>
@@ -57,7 +57,7 @@
               <a class="nav-link" href="staffLogin.jsp">Staff Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="register.jsp">SetPasscode</a>
+              <a class="nav-link" href="register.jsp">Set Passcode</a>
             </li>
           <% } %>
         </ul>
