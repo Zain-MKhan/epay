@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import connection.dbConnection;
 import business.Customer;
 
-
 public class RegisterObject {
 
     private Connection connection;
@@ -15,21 +14,21 @@ public class RegisterObject {
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
-
     public RegisterObject(Connection connection) {
         super();
         this.connection = connection;
     }
 
     public boolean setCode(Customer user) throws SQLException {
-           boolean result = false;
-    try{
+        boolean result = false;
+        try {
 
-            dbConnection.beginTransaction(); 
-            myQuery = "INSERT INTO customers (email, password) VALUES (?, ?);";
+            dbConnection.beginTransaction();
+            myQuery = "INSERT INTO customers (email, password, isStaff) VALUES (?, ?, ?);";
             preparedStatement = connection.prepareStatement(myQuery);
             preparedStatement.setString(1, user.getEmail());
             preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getIsStaff());
             int rowsInserted = preparedStatement.executeUpdate();
             dbConnection.commitTransaction(); // Commit transaction
             return rowsInserted > 0;
@@ -40,8 +39,7 @@ public class RegisterObject {
         }
     }
 
-
-        public boolean updateCode(Customer user) {
+    public boolean updateCode(Customer user) {
         try {
             dbConnection.beginTransaction(); // Begin transaction
 
@@ -49,8 +47,7 @@ public class RegisterObject {
             preparedStatement = connection.prepareStatement(myQuery);
             preparedStatement.setString(1, user.getPassword());
             preparedStatement.setString(2, user.getEmail());
-           
-    
+
             int rowsUpdated = preparedStatement.executeUpdate();
 
             dbConnection.commitTransaction(); // Commit transaction
@@ -62,6 +59,5 @@ public class RegisterObject {
             return false;
         }
     }
-
 
 }

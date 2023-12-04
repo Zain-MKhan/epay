@@ -32,12 +32,21 @@
 			<div class="card-body">
 				<form action="change" method="post">
 					<div class="form-group">
-						<label>Email address</label> 
-						<input type="text" id = "email" name="email" class="form-control" placeholder="Email" value="user@gmail.com" required>
+						<%if (authorizedCustomer!=null){ %>
+							<label>Email address: <%=authorizedCustomer.getEmail()%></label> 
+							<input type="hidden" name="email" value="<%=authorizedCustomer.getEmail()%>" class="form-input">
+						<%} else if (authorizedStaff!=null){ %>
+							<label>Email address: <%=authorizedStaff.getUserName()%></label> 
+							<input type="hidden" name="email" value="<%=authorizedStaff.getUserName()%>" class="form-input">
+						<%}%>		
 					</div>
 					<div class="form-group">
 						<label>Password</label> 
-						<input type="text" id = "password" name="password" class="form-control" placeholder="Password" value="secret" required>
+						<%if (authorizedCustomer!=null){ %>
+							<input type="text" id = "password" name="password" class="form-control" placeholder="Password" value="<%=authorizedCustomer.getPassword()%>" required>
+						<%} else if (authorizedStaff!=null){ %>
+							<input type="text" id = "password" name="password" class="form-control" placeholder="Password" value="<%=authorizedStaff.getPassword()%>" required>
+						<%}%>
 					</div>
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">Confirm</button>
