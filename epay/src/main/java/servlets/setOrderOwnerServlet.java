@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/setOrderEmail")
 public class setOrderOwnerServlet extends jakarta.servlet.http.HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
 
         String orderIdParam = request.getParameter("orderid");
