@@ -14,6 +14,7 @@ In addition, for a3 we are using SQLite for handling the backend.
 ### To run the tests, you'll need to:
 run the following command:
 - mvn clean install
+  
 The test results will be outputted automatically in the Terminal.
 The written unit tests may be found in src/test/java
 
