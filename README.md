@@ -1,9 +1,9 @@
 # SOEN387
 Assignments for SOEN387 Fall 2023
 
-Zain Khan
+Zain Khan Student ID 40110693
 
-Ashiqur Rahman
+Ashiqur Rahman Student ID 40096265
 
 ## Development Environment and Compilation Instructions
 
