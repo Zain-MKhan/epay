@@ -299,6 +299,12 @@ package business{
     public Order getOrder(String user, int orderId)
     
     public Order ShipOrder(int id, int trackingNumber)
+    
+    public void SetOrderOwner(int orderId, int userId)
+    
+    public void SetPasscode(int user, String pass) 
+     
+    public void ChangePermission(User user, String permission)
   
 
     
